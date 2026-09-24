@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary-container":"#00a2e6","primary-fixed-dim":"#7bd0ff","primary-fixed":"#c4e7ff","inverse-primary":"#00668a","on-error":"#690005","inverse-surface":"#e5e1e4","tertiary-container":"#f1a02b","surface-container-high":"#2a2a2c","background":"#131315","on-secondary":"#00344d","outline-variant":"#3e484f","error":"#ffb4ab","secondary":"#89ceff","on-tertiary-fixed":"#2a1700","surface-dim":"#131315","on-primary-fixed":"#001e2c","surface":"#131315","on-primary-container":"#004965","surface-variant":"#353437","on-primary":"#00354a","on-secondary-fixed":"#001e2f","surface-container":"#201f22","tertiary-fixed-dim":"#ffb960","secondary-fixed":"#c9e6ff","secondary-fixed-dim":"#89ceff","surface-container-lowest":"#0e0e10","surface-tint":"#7bd0ff","outline":"#87929a","surface-container-low":"#1c1b1d","on-primary-fixed-variant":"#004c69","on-surface-variant":"#bdc8d1","on-error-container":"#ffdad6","surface-bright":"#39393b","on-surface":"#e5e1e4","on-tertiary-container":"#613b00","on-secondary-fixed-variant":"#004c6e","surface-container-highest":"#353437","tertiary":"#ffc176","on-tertiary-fixed-variant":"#653e00","primary-container":"#38bdf8","primary":"#8ed5ff","error-container":"#93000a","on-background":"#e5e1e4","on-tertiary":"#472a00","inverse-on-surface":"#313032","on-secondary-container":"#00344e","tertiary-fixed":"#ffddb8"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-lg":"1.5rem","space-xl":"2.5rem","space-xs":"0.25rem","space-sm":"0.5rem",gutter:"1.25rem",margin:"2rem","margin-mobile":"1rem","gutter-mobile":"0.75rem","space-md":"1rem"},fontFamily:{"label-lg":["Geist"],"body-lg":["Inter"],"headline-lg":["Geist"],"body-sm":["Inter"],"label-md":["Geist"],"body-md":["Inter"],"numeric-md":["Geist"],"headline-sm":["Geist"],"numeric-lg":["Geist"],"label-sm":["Geist"],"display-lg-mobile":["Geist"],"display-lg":["Geist"],"headline-md":["Geist"]},fontSize:{"label-lg":["13px",{lineHeight:"18px",letterSpacing:"0.01em",fontWeight:"500"}],"body-lg":["15px",{lineHeight:"24px",fontWeight:"400"}],"headline-lg":["24px",{lineHeight:"32px",letterSpacing:"-0.01em",fontWeight:"500"}],"body-sm":["12px",{lineHeight:"18px",fontWeight:"400"}],"label-md":["11px",{lineHeight:"16px",letterSpacing:"0.04em",fontWeight:"500"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"numeric-md":["18px",{lineHeight:"24px",letterSpacing:"-0.01em",fontWeight:"500"}],"headline-sm":["16px",{lineHeight:"24px",fontWeight:"500"}],"numeric-lg":["28px",{lineHeight:"32px",letterSpacing:"-0.02em",fontWeight:"600"}],"label-sm":["10px",{lineHeight:"14px",letterSpacing:"0.06em",fontWeight:"500"}],"display-lg-mobile":["24px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"600"}],"display-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"600"}],"headline-md":["20px",{lineHeight:"28px",letterSpacing:"-0.005em",fontWeight:"500"}]}}}};</script></head><body class="bg-surface-container-lowest text-on-surface font-body-md min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/90 backdrop-blur-xl border-b border-surface-container-low"><div class="h-14 w-full px-8 flex items-center justify-between gap-4"><div class="flex items-center gap-6"><div class="flex items-center gap-2"><span class="text-on-surface font-headline-sm text-headline-sm tracking-tight">GeneGuard</span><span class="px-1.5 py-0.5 rounded border border-outline-variant font-label-sm text-label-sm text-on-surface-variant tracking-wider">MEDICAL AI</span></div><nav class="hidden xl:flex items-center gap-6" data-active-classes="text-on-surface border-b border-on-surface"><a aria-current="page" class="py-4 font-body-sm transition-colors text-on-surface border-b border-on-surface" data-path="my-health-data" href="#">My Health Data</a><a class="py-4 font-body-sm text-body-sm text-outline hover:text-on-surface transition-colors border-b border-transparent" data-path="family-network" href="#">Family Network</a><a class="py-4 font-body-sm text-body-sm text-outline hover:text-on-surface transition-colors border-b border-transparent" data-path="analysis-dashboard" href="#">Analysis Dashboard</a><a class="py-4 font-body-sm text-body-sm text-outline hover:text-on-surface transition-colors border-b border-transparent" data-path="original-medical-app" href="#">Original Medical App</a><a class="py-4 font-body-sm text-body-sm text-outline hover:text-on-surface transition-colors border-b border-transparent" data-path="quick-chat" href="#">Quick Chat</a><a class="py-4 font-body-sm text-body-sm text-outline hover:text-on-surface transition-colors border-b border-transparent" data-path="upload-lab-report" href="#">Upload Lab Report</a></nav></div><div class="flex items-center gap-4"><button class="hidden sm:inline-flex items-center justify-center px-3 py-1.5 rounded-lg bg-surface-container-high/40 hover:bg-surface-container-high border border-outline-variant text-on-surface font-label-md text-label-md transition-all" type="button">Start New User</button><div class="flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container-low border border-outline-variant/40"><span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span><span class="font-label-sm text-label-sm text-on-surface-variant">Profile: <span class="text-on-surface">Patient</span></span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-14 bg-surface-container-lowest"><div class="max-w-6xl mx-auto px-8 py-8 w-full"><div class="flex flex-col w-full">
+<!-- System Status Strip & Context Controls -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-surface-container-low">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Health Analysis Engine</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+          ML-v2.9 Clinical Pipeline
+        </span>
+</div>
+<p class="font-body-sm text-body-sm text-outline">
+        Universal biomarker profile ingestion across multi-disease inference networks.
+      </p>
+</div>
+<!-- Quick Operations Toolbar -->
+<div class="flex items-center gap-2 flex-wrap">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors" id="btn-fill-all" type="button">
+<span class="material-symbols-outlined text-[15px] text-primary-container">dataset</span>
+<span>Auto-Populate Demo</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors" id="btn-upload-lab" type="button">
+<span class="material-symbols-outlined text-[15px] text-outline">upload_file</span>
+<span>Ingest Lab PDF / JSON</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container-lowest hover:bg-surface-container-low text-outline hover:text-on-surface font-label-md text-label-md transition-colors" id="btn-clear-all" type="button">
+<span class="material-symbols-outlined text-[15px]">refresh</span>
+<span>Reset State</span>
+</button>
+</div>
+</div>
+<!-- Global Patient Profile Module -->
+<section class="mt-6 rounded-xl bg-surface-container-lowest border border-surface-container-low p-5">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[18px]">account_box</span>
+</div>
+<div>
+<div class="flex items-center gap-2.5">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Global Patient Profile</h2>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-low font-label-sm text-label-sm text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+              Biometrics Incomplete
+            </div>
+</div>
+<p class="font-body-sm text-body-sm text-outline">Shared across 5 target clinical models to eliminate redundant record entry.</p>
+</div>
+</div>
+<button class="self-start sm:self-auto px-3.5 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center gap-2" id="btn-complete-profile" type="button">
+<span class="material-symbols-outlined text-[16px] text-outline">edit_note</span>
+<span>Complete Master Profile</span>
+</button>
+</div>
+<!-- 6 Invariant Demographic & Biometric Cells -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 pt-2">
+<div class="p-3 rounded-lg bg-surface-container-low/60 flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Chronological Age</span>
+<div class="flex items-baseline justify-between mt-2">
+<span class="font-numeric-md text-numeric-md text-on-surface-variant font-medium" id="bio-age">54 yrs</span>
+<span class="font-label-sm text-label-sm text-primary-container">Synced</span>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low/60 flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Biological Sex</span>
+<div class="flex items-baseline justify-between mt-2">
+<span class="font-numeric-md text-numeric-md text-on-surface" id="bio-sex">Male (XY)</span>
+<span class="font-label-sm text-label-sm text-outline">Verified</span>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low/60 flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Stature / Height</span>
+<div class="flex items-baseline justify-between mt-2">
+<span class="font-numeric-md text-numeric-md text-on-surface" id="bio-height">178 cm</span>
+<span class="font-label-sm text-label-sm text-outline">±0.5</span>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low/60 flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Body Mass</span>
+<div class="flex items-baseline justify-between mt-2">
+<span class="font-numeric-md text-numeric-md text-on-surface" id="bio-weight">81.4 kg</span>
+<span class="font-label-sm text-label-sm text-outline">Scale</span>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low/60 flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Calculated BMI</span>
+<div class="flex items-baseline justify-between mt-2">
+<span class="font-numeric-md text-numeric-md text-on-surface" id="bio-bmi">25.7</span>
+<span class="font-label-sm text-label-sm text-tertiary">Pre-obese</span>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low/60 flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">ABO / Rh Group</span>
+<div class="flex items-baseline justify-between mt-2">
+<span class="font-numeric-md text-numeric-md text-on-surface" id="bio-blood">O Pos (Rh+)</span>
+<span class="font-label-sm text-label-sm text-outline">Serology</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Disease Model Selection Carousel / Ribbon -->
+<section class="mt-6">
+<div class="flex items-center justify-between pb-3">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Diagnostic Inference Models (5 Available)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Active Selection: <strong class="text-on-surface font-medium">Cardiovascular ML</strong></span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3">
+<!-- Card 1: Cardiovascular (Active) -->
+<div class="cursor-pointer rounded-xl bg-surface-container-low p-4 flex flex-col justify-between transition-all relative overflow-hidden group" id="card-cardio">
+<div class="absolute inset-0 bg-primary-container/5 pointer-events-none"></div>
+<div class="flex items-start justify-between">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-container/20 font-label-sm text-label-sm text-primary-container">Form Active</span>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Cardiovascular</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Atherosclerotic & ischemic vector evaluation</p>
+</div>
+<div class="pt-3 mt-3 border-t border-surface-container flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-outline">4 ready · 7 inputs</span>
+<span class="text-primary-container flex items-center">Active <span class="material-symbols-outlined text-[13px] ml-0.5">check</span></span>
+</div>
+</div>
+<!-- Card 2: Metabolic -->
+<div class="cursor-pointer rounded-xl bg-surface-container-lowest hover:bg-surface-container-low border border-surface-container-low p-4 flex flex-col justify-between transition-all group" id="card-metabolic">
+<div class="flex items-start justify-between">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-outline group-hover:text-on-surface">
+<span class="material-symbols-outlined text-[18px]">local_fire_department</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-outline">Standby</span>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Metabolic System</h3>
+<p class="font-body-sm text-body-sm text-outline mt-1">Insulin resistance & glycosylation index</p>
+</div>
+<div class="pt-3 mt-3 border-t border-surface-container-low flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-outline">4 ready · 10 inputs</span>
+<span class="text-outline group-hover:text-on-surface flex items-center">Load <span class="material-symbols-outlined text-[13px] ml-0.5">arrow_forward</span></span>
+</div>
+</div>
+<!-- Card 3: Blood Pressure -->
+<div class="cursor-pointer rounded-xl bg-surface-container-lowest hover:bg-surface-container-low border border-surface-container-low p-4 flex flex-col justify-between transition-all group" id="card-bp">
+<div class="flex items-start justify-between">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-outline group-hover:text-on-surface">
+<span class="material-symbols-outlined text-[18px]">vital_signs</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-outline">Standby</span>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Hemodynamics</h3>
+<p class="font-body-sm text-body-sm text-outline mt-1">Arterial elastance & systemic load</p>
+</div>
+<div class="pt-3 mt-3 border-t border-surface-container-low flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-outline">3 ready · 10 inputs</span>
+<span class="text-outline group-hover:text-on-surface flex items-center">Load <span class="material-symbols-outlined text-[13px] ml-0.5">arrow_forward</span></span>
+</div>
+</div>
+<!-- Card 4: Thyroid -->
+<div class="cursor-pointer rounded-xl bg-surface-container-lowest hover:bg-surface-container-low border border-surface-container-low p-4 flex flex-col justify-between transition-all group" id="card-thyroid">
+<div class="flex items-start justify-between">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-outline group-hover:text-on-surface">
+<span class="material-symbols-outlined text-[18px]">shield</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-outline">Standby</span>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Thyroid Profile</h3>
+<p class="font-body-sm text-body-sm text-outline mt-1">Endocrine balance & autoantibody signal</p>
+</div>
+<div class="pt-3 mt-3 border-t border-surface-container-low flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-outline">2 ready · 11 inputs</span>
+<span class="text-outline group-hover:text-on-surface flex items-center">Load <span class="material-symbols-outlined text-[13px] ml-0.5">arrow_forward</span></span>
+</div>
+</div>
+<!-- Card 5: Oncological / Cancer Risk -->
+<div class="cursor-pointer rounded-xl bg-surface-container-lowest hover:bg-surface-container-low border border-surface-container-low p-4 flex flex-col justify-between transition-all group" id="card-cancer">
+<div class="flex items-start justify-between">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-outline group-hover:text-on-surface">
+<span class="material-symbols-outlined text-[18px]">chips</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-outline">Standby</span>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Oncological Risk</h3>
+<p class="font-body-sm text-body-sm text-outline mt-1">Multi-marker somatic disposition scan</p>
+</div>
+<div class="pt-3 mt-3 border-t border-surface-container-low flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-outline">2 ready · 21 inputs</span>
+<span class="text-outline group-hover:text-on-surface flex items-center">Load <span class="material-symbols-outlined text-[13px] ml-0.5">arrow_forward</span></span>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Workspace: Left Form & Right Diagnostic Engine -->
+<div class="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- LEFT COLUMN: Specific Module Form (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<!-- Module Subheader -->
+<div class="rounded-xl bg-surface-container-lowest border border-surface-container-low p-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-surface-container-low">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Cardiovascular Inference Inputs</h2>
+<p class="font-body-sm text-body-sm text-outline mt-0.5">Spec-specific biomarkers mapped directly to PyTorch ONNX Runtime.</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1 rounded bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" id="btn-quick-fill" type="button">
+              Set Normative
+            </button>
+<button class="px-2.5 py-1 rounded bg-surface-container-low hover:bg-surface-container text-outline hover:text-on-surface font-label-sm text-label-sm transition-colors" id="btn-clear-fields" type="button">
+              Reset Form
+            </button>
+</div>
+</div>
+<form class="mt-6 flex flex-col gap-6" id="cardio-form" onsubmit="event.preventDefault();">
+<!-- Category 1: Direct Hemodynamics & Blood Markers -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm tracking-wider uppercase text-outline">Tier 1: Clinical Measurements</span>
+<span class="font-label-sm text-label-sm text-outline">Units Standard: SI / Imperial</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Systolic BP -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface" for="input-sys">Systolic Arterial Pressure</label>
+<span class="font-label-sm text-label-sm text-outline">Target: 90–120 mmHg</span>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-surface-container-high rounded px-3 py-2 text-on-surface font-numeric-md text-numeric-md focus:outline-none focus:border-primary-container" id="input-sys" max="240" min="70" type="number" value="118"/>
+<span class="absolute right-3 top-2.5 font-label-sm text-label-sm text-outline pointer-events-none">mmHg</span>
+</div>
+</div>
+<!-- Diastolic BP -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface" for="input-dia">Diastolic Arterial Pressure</label>
+<span class="font-label-sm text-label-sm text-outline">Target: 60–80 mmHg</span>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-surface-container-high rounded px-3 py-2 text-on-surface font-numeric-md text-numeric-md focus:outline-none focus:border-primary-container" id="input-dia" max="140" min="40" type="number" value="76"/>
+<span class="absolute right-3 top-2.5 font-label-sm text-label-sm text-outline pointer-events-none">mmHg</span>
+</div>
+</div>
+<!-- Total Serum Cholesterol -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface" for="select-chol">Serum Cholesterol Stratum</label>
+<span class="font-label-sm text-label-sm text-primary-container">Optimum <200</span>
+</div>
+<select class="w-full bg-surface-container-low border border-surface-container-high rounded px-3 py-2 text-on-surface font-body-md text-body-md focus:outline-none focus:border-primary-container" id="select-chol">
+<option selected="" value="normal">Normal (<200 mg/dL)</option>
+<option value="borderline">Borderline Elevated (200–239 mg/dL)</option>
+<option value="high">High Risk (≥240 mg/dL)</option>
+</select>
+</div>
+<!-- Fasting Blood Glucose -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface" for="select-gluc">Fasting Glucose Category</label>
+<span class="font-label-sm text-label-sm text-primary-container">Optimum <100</span>
+</div>
+<select class="w-full bg-surface-container-low border border-surface-container-high rounded px-3 py-2 text-on-surface font-body-md text-body-md focus:outline-none focus:border-primary-container" id="select-gluc">
+<option selected="" value="normal">Euglycemic (<100 mg/dL)</option>
+<option value="impaired">Impaired Fasting (100–125 mg/dL)</option>
+<option value="hyperglycemic">Hyperglycemic (≥126 mg/dL)</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Category 2: Behavioral & Environmental Risk Factors -->
+<div class="flex flex-col gap-4 pt-4 border-t border-surface-container-low">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm tracking-wider uppercase text-outline">Tier 2: Lifestyle & Environmental Modifiers</span>
+<span class="font-label-sm text-label-sm text-outline">Self-Reported Verification</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<!-- Tobacco Exposure -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="select-smoke">Tobacco / Nicotine</label>
+<select class="w-full bg-surface-container-low border border-surface-container-high rounded px-3 py-2 text-on-surface font-body-sm text-body-sm focus:outline-none focus:border-primary-container" id="select-smoke">
+<option selected="" value="0">Non-User (Never)</option>
+<option value="1">Former (>12 mos cessation)</option>
+<option value="2">Current Regular Smoker</option>
+</select>
+</div>
+<!-- Alcohol Intake -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="select-alcohol">Ethanol Consumption</label>
+<select class="w-full bg-surface-container-low border border-surface-container-high rounded px-3 py-2 text-on-surface font-body-sm text-body-sm focus:outline-none focus:border-primary-container" id="select-alcohol">
+<option selected="" value="0">Minimal / Abstinent</option>
+<option value="1">Moderate (≤7 units/wk)</option>
+<option value="2">Elevated (>14 units/wk)</option>
+</select>
+</div>
+<!-- Physical Activity -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="select-activity">Physical Exercise</label>
+<select class="w-full bg-surface-container-low border border-surface-container-high rounded px-3 py-2 text-on-surface font-body-sm text-body-sm focus:outline-none focus:border-primary-container" id="select-activity">
+<option selected="" value="2">Active (≥150 min/wk)</option>
+<option value="1">Light Activity</option>
+<option value="0">Sedentary</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Category 3: Restrained Auxiliary Inputs -->
+<div class="flex flex-col gap-2 pt-4 border-t border-surface-container-low">
+<span class="font-label-sm text-label-sm tracking-wider uppercase text-outline">Tier 3: Familial Predisposition</span>
+<div class="flex items-center gap-6 pt-1">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded bg-surface-container-low border-surface-container-high text-primary-container focus:ring-0 w-4 h-4" id="check-premature-cad" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Premature First-Degree CAD History (<55 M / <65 F)</span>
+</label>
+</div>
+</div>
+<!-- Execution Action Strip -->
+<div class="pt-4 flex items-center justify-between border-t border-surface-container-low">
+<div class="flex items-center gap-2 font-label-sm text-label-sm text-outline">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+              7 Module inputs verified against Schema v4.2
+            </div>
+<button class="px-5 py-2.5 rounded bg-on-surface text-surface font-label-lg text-label-lg font-medium hover:bg-white transition-all flex items-center gap-2" id="btn-run-cardio" type="button">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+<span>Execute Cardiovascular Model</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Ancillary Context Card: Genetic Imputation Notice -->
+<div class="rounded-xl bg-surface-container-lowest border border-surface-container-low p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-primary-container">strikethrough_s</span>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface">PRS Linkage Active</div>
+<div class="font-body-sm text-body-sm text-outline">Polygenic risk scoring integrated: Chromosome 9p21 locus imputed at 0.98 probability.</div>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded bg-surface-container-low font-numeric-md text-numeric-md text-on-surface-variant">0.14 RSD</span>
+</div>
+</div>
+<!-- RIGHT COLUMN: Real-Time Diagnostic Feed & Predictive Output (5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Realtime Inference Panel -->
+<div class="rounded-xl bg-surface-container-lowest border border-surface-container-low p-6 flex flex-col justify-between min-h-[520px] relative overflow-hidden" id="diagnostic-panel">
+<!-- Standby State Container -->
+<div class="flex flex-col items-center justify-center text-center my-auto py-12" id="state-standby">
+<div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center text-outline mb-4">
+<span class="material-symbols-outlined text-[28px] animate-pulse">monitor_heart</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Awaiting Model Execution</h3>
+<p class="font-body-sm text-body-sm text-outline max-w-xs mt-1">
+            Biomarkers primed on the left. Click <strong class="text-on-surface font-medium">“Execute Cardiovascular Model”</strong> to run cross-validation and risk clustering.
+          </p>
+<div class="mt-6 flex items-center gap-3 text-outline font-label-sm text-label-sm">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> Model Ready</span>
+<span>•</span>
+<span>Latency: ~42ms</span>
+</div>
+</div>
+<!-- Processing State Container (Hidden by default) -->
+<div class="hidden flex-col items-center justify-center text-center my-auto py-12" id="state-running">
+<div class="w-12 h-12 rounded-full border-2 border-surface-container border-t-primary-container animate-spin mb-4"></div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Evaluating Multivariate Hazards</h3>
+<p class="font-body-sm text-body-sm text-outline max-w-xs mt-1">
+            Running Cox Proportional Hazards and gradient-boosted trees against UK Biobank cohorts...
+          </p>
+</div>
+<!-- Active Diagnostic Results Container (Hidden by default, revealed on Run) -->
+<div class="hidden flex-col gap-5" id="state-results">
+<!-- Result Card Header -->
+<div class="flex items-center justify-between pb-4 border-b border-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface">Inference Complete</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Confidence: 96.4%</span>
+</div>
+<!-- Primary Metric Ring / Readout -->
+<div class="p-4 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">10-Year ASCVD Risk Score</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-numeric-lg text-numeric-lg text-on-surface" id="res-score">3.8%</span>
+<span class="font-label-sm text-label-sm text-primary-container font-medium">Low Absolute Risk</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline mt-1">Framingham calibration: Lower 12th percentile for male, age 54.</p>
+</div>
+<!-- Restrained Inline Visual SVG Gauge -->
+<div class="w-16 h-16 flex-shrink-0 relative">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-primary-container transition-all duration-700 ease-out" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" id="svg-risk-path" stroke="currentColor" stroke-dasharray="18, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center font-numeric-md text-numeric-md text-on-surface">
+                A+
+              </div>
+</div>
+</div>
+<!-- Feature Attribution (SHAP values breakdown) -->
+<div class="flex flex-col gap-2 pt-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Key Determinants (SHAP Weights)</span>
+<div class="flex flex-col gap-2.5">
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">Normotensive SBP/DBP</span>
+<span class="text-primary-container">-0.41 (Protective)</span>
+</div>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 78%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">High Physical Activity</span>
+<span class="text-primary-container">-0.29 (Protective)</span>
+</div>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 60%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">BMI Metric (25.7)</span>
+<span class="text-tertiary">+0.14 (Mild Hazard)</span>
+</div>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary" style="width: 25%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Clinical Recommendations -->
+<div class="p-3.5 rounded-lg bg-surface-container-low/50 border border-surface-container-low flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-on-surface">assignment_turned_in</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Physician Guidance Note</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline">
+              Maintain current aerobic regimen. Re-screen lipid fraction (ApoB/LDL-P) at 12-month interval or upon modification of tobacco exposure.
+            </p>
+</div>
+<!-- Bottom Action in Results View -->
+<div class="pt-2 flex items-center justify-between">
+<button class="px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1.5" id="btn-export-report" type="button">
+<span class="material-symbols-outlined text-[15px]">download</span>
+<span>Export Clinical Summary</span>
+</button>
+<span class="font-label-sm text-label-sm text-outline">Hash: d7e8...4a2f</span>
+</div>
+</div>
+<!-- Static Panel Footer / Metadata -->
+<div class="pt-4 mt-auto border-t border-surface-container-low flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>Engine: CoreNet v4.8</span>
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+            Deterministic Mode
+          </span>
+</div>
+</div>
+<!-- Compact Diagnostic Cluster: Cross-Organ Corroboration -->
+<div class="rounded-xl bg-surface-container-lowest border border-surface-container-low p-4 flex flex-col gap-3">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Cross-Model Corroboration Signal</span>
+<div class="flex items-center justify-between text-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="text-on-surface">Metabolic Interlock</span>
+</div>
+<span class="text-outline">No cross-hazard detected</span>
+</div>
+<div class="flex items-center justify-between text-body-sm text-body-sm pt-2 border-t border-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="text-on-surface">Endocrine Interlock</span>
+</div>
+<span class="text-outline">Requires TSH panel</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function initGeneGuard() {
+    const runBtn = document.getElementById('btn-run-cardio');
+    const standbyState = document.getElementById('state-standby');
+    const runningState = document.getElementById('state-running');
+    const resultsState = document.getElementById('state-results');
+    const quickFillBtn = document.getElementById('btn-quick-fill');
+    const clearBtn = document.getElementById('btn-clear-fields');
+    const fillAllBtn = document.getElementById('btn-fill-all');
+    const clearAllBtn = document.getElementById('btn-clear-all');
+
+    const sysInput = document.getElementById('input-sys');
+    const diaInput = document.getElementById('input-dia');
+    const cholSelect = document.getElementById('select-chol');
+    const glucSelect = document.getElementById('select-gluc');
+    const smokeSelect = document.getElementById('select-smoke');
+    const alcoholSelect = document.getElementById('select-alcohol');
+    const activitySelect = document.getElementById('select-activity');
+
+    function executeAnalysis() {
+      standbyState.classList.add('hidden');
+      resultsState.classList.add('hidden');
+      runningState.classList.remove('hidden');
+      runningState.classList.add('flex');
+
+      setTimeout(() => {
+        runningState.classList.add('hidden');
+        runningState.classList.remove('flex');
+        resultsState.classList.remove('hidden');
+        resultsState.classList.add('flex');
+
+        // Dynamically compute indicative score from current inputs
+        const sysVal = parseInt(sysInput.value, 10) || 120;
+        const diaVal = parseInt(diaInput.value, 10) || 80;
+        const isSmoker = smokeSelect.value === "2";
+        
+        let calculatedScore = 2.4;
+        if (sysVal > 130) calculatedScore += 2.2;
+        if (diaVal > 85) calculatedScore += 1.4;
+        if (cholSelect.value === 'high') calculatedScore += 3.1;
+        if (isSmoker) calculatedScore += 4.5;
+        if (activitySelect.value === '0') calculatedScore += 1.8;
+
+        const scoreFormatted = Math.min(Math.max(calculatedScore, 1.2), 34.0).toFixed(1);
+        const scoreElem = document.getElementById('res-score');
+        const svgPath = document.getElementById('svg-risk-path');
+
+        if (scoreElem) {
+          scoreElem.textContent = scoreFormatted + '%';
+        }
+        if (svgPath) {
+          const dash = Math.round(parseFloat(scoreFormatted) * 2.5);
+          svgPath.setAttribute('stroke-dasharray', `${Math.min(dash, 95)}, 100`);
+        }
+      }, 550);
+    }
+
+    if (runBtn) {
+      runBtn.addEventListener('click', executeAnalysis);
+    }
+
+    if (quickFillBtn) {
+      quickFillBtn.addEventListener('click', () => {
+        sysInput.value = 118;
+        diaInput.value = 76;
+        cholSelect.value = 'normal';
+        glucSelect.value = 'normal';
+        smokeSelect.value = '0';
+        alcoholSelect.value = '0';
+        activitySelect.value = '2';
+      });
+    }
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        sysInput.value = '';
+        diaInput.value = '';
+      });
+    }
+
+    if (fillAllBtn) {
+      fillAllBtn.addEventListener('click', () => {
+        sysInput.value = 120;
+        diaInput.value = 78;
+        cholSelect.value = 'normal';
+        glucSelect.value = 'normal';
+        smokeSelect.value = '0';
+        alcoholSelect.value = '1';
+        activitySelect.value = '2';
+        executeAnalysis();
+      });
+    }
+
+    if (clearAllBtn) {
+      clearAllBtn.addEventListener('click', () => {
+        sysInput.value = 110;
+        diaInput.value = 70;
+        resultsState.classList.add('hidden');
+        runningState.classList.add('hidden');
+        standbyState.classList.remove('hidden');
+        standbyState.classList.add('flex');
+      });
+    }
+
+    // Interactive selector cards
+    const diseaseCards = ['card-cardio', 'card-metabolic', 'card-bp', 'card-thyroid', 'card-cancer'];
+    diseaseCards.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('click', () => {
+        diseaseCards.forEach(otherId => {
+          const otherEl = document.getElementById(otherId);
+          if (otherEl) {
+            otherEl.classList.remove('bg-surface-container-low');
+            otherEl.classList.add('bg-surface-container-lowest');
+          }
+        });
+        el.classList.remove('bg-surface-container-lowest');
+        el.classList.add('bg-surface-container-low');
+      });
+    });
+  })();
+</script></div></main><footer class="w-full border-t border-surface-container-low bg-surface-container-lowest"><div class="max-w-6xl mx-auto px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 font-label-sm text-label-sm text-outline"><span>GeneGuard Clinical Systems • High-Precision Genomic Intelligence</span><div class="flex items-center gap-6"><span class="text-on-surface-variant">ISO-27001 • HIPAA Compliant</span><span>v4.2.1-prod</span></div></div></footer></body></html>

@@ -1,0 +1,128 @@
+{
+  "model_name": "GeneGuard Thyroid ML Pipeline",
+  "dataset": "UCI Hypothyroid Dataset (hypothyroid_1.csv)",
+  "target": "binaryclass (0: Elevated Thyroid Disorder Signal / N, 1: Normal Thyroid Function Signal / P)",
+  "version": "1.0",
+  "classes": [
+    0,
+    1
+  ],
+  "features": [
+    "age",
+    "sex",
+    "on_thyroxine",
+    "query_on_thyroxine",
+    "on_antithyroid_medication",
+    "sick",
+    "pregnant",
+    "thyroid_surgery",
+    "i131_treatment",
+    "query_hypothyroid",
+    "query_hyperthyroid",
+    "lithium",
+    "goitre",
+    "tumor",
+    "hypopituitary",
+    "psych",
+    "tsh_measured",
+    "tsh",
+    "t3_measured",
+    "t3",
+    "tt4_measured",
+    "tt4",
+    "t4u_measured",
+    "t4u",
+    "fti_measured",
+    "fti",
+    "tbg_measured",
+    "referral_source"
+  ],
+  "numeric_features": [
+    "age",
+    "tsh",
+    "t3",
+    "tt4",
+    "t4u",
+    "fti"
+  ],
+  "categorical_features": [
+    "sex",
+    "on_thyroxine",
+    "query_on_thyroxine",
+    "on_antithyroid_medication",
+    "sick",
+    "pregnant",
+    "thyroid_surgery",
+    "i131_treatment",
+    "query_hypothyroid",
+    "query_hyperthyroid",
+    "lithium",
+    "goitre",
+    "tumor",
+    "hypopituitary",
+    "psych",
+    "tsh_measured",
+    "t3_measured",
+    "tt4_measured",
+    "t4u_measured",
+    "fti_measured",
+    "tbg_measured",
+    "referral_source"
+  ],
+  "train_samples": 3017,
+  "test_samples": 755,
+  "cross_validation_5fold": {
+    "cv_accuracy_mean": 0.9933708938749959,
+    "cv_accuracy_std": 0.0029659823929586984,
+    "cv_roc_auc_mean": 0.9993473214526066,
+    "cv_roc_auc_std": 0.0006249795169003025,
+    "cv_f1_macro_mean": 0.9768791893533131,
+    "cv_f1_macro_std": 0.010240285378046996,
+    "cv_precision_macro_mean": 0.975595355781741,
+    "cv_recall_macro_mean": 0.9786898929978033
+  },
+  "untouched_test_evaluation": {
+    "accuracy": 0.9973509933774835,
+    "roc_auc": 0.999826844110226,
+    "pr_auc_class_0_disorder": 0.9978420724898687,
+    "pr_auc_class_1_normal": 0.9999857343158993,
+    "brier_score_loss": 0.007108964162317155,
+    "confusion_matrix": [
+      [
+        57,
+        1
+      ],
+      [
+        1,
+        696
+      ]
+    ],
+    "classification_report": {
+      "0": {
+        "precision": 0.9827586206896551,
+        "recall": 0.9827586206896551,
+        "f1-score": 0.9827586206896551,
+        "support": 58.0
+      },
+      "1": {
+        "precision": 0.9985652797704447,
+        "recall": 0.9985652797704447,
+        "f1-score": 0.9985652797704447,
+        "support": 697.0
+      },
+      "accuracy": 0.9973509933774835,
+      "macro avg": {
+        "precision": 0.99066195023005,
+        "recall": 0.99066195023005,
+        "f1-score": 0.99066195023005,
+        "support": 755.0
+      },
+      "weighted avg": {
+        "precision": 0.9973509933774835,
+        "recall": 0.9973509933774835,
+        "f1-score": 0.9973509933774835,
+        "support": 755.0
+      }
+    }
+  }
+}

@@ -1,0 +1,199 @@
+/* ==========================================================================
+   GeneGuard AI Button — Ripple Wave Animated Button with App Logo
+   Based on Uiverse ripple loader by Smit-Prajapati
+   ========================================================================== */
+
+.ai-fab-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ai-button-loader {
+  --size: 70px;
+  --duration: 2s;
+  --logo-color: #38bdf8;
+  --background: linear-gradient(
+    0deg,
+    rgba(15, 23, 42, 0.65) 0%,
+    rgba(56, 189, 248, 0.22) 100%
+  );
+  width: var(--size);
+  height: var(--size);
+  aspect-ratio: 1;
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ai-button-loader:hover {
+  transform: scale(1.08);
+}
+
+.ai-button-loader:active {
+  transform: scale(0.96);
+}
+
+/* 5 Concentric Ripple Boxes */
+.ai-button-loader .box {
+  position: absolute;
+  background: var(--background);
+  border-radius: 50%;
+  border-top: 1px solid rgba(56, 189, 248, 0.85);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 10px -0px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: ai-ripple var(--duration) infinite ease-in-out;
+  pointer-events: none;
+}
+
+/* Innermost Core Box (Contains the App Logo) */
+.ai-button-loader .box:nth-child(1) {
+  inset: 15%;
+  z-index: 99;
+  border-color: rgba(56, 189, 248, 0.95);
+  background: radial-gradient(circle, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.82) 100%);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.4), inset 0 0 10px rgba(56, 189, 248, 0.25);
+  pointer-events: auto;
+}
+
+/* Ripple Layer 2 */
+.ai-button-loader .box:nth-child(2) {
+  inset: 11%;
+  z-index: 98;
+  border-color: rgba(56, 189, 248, 0.65);
+  animation-delay: 0.2s;
+}
+
+/* Ripple Layer 3 */
+.ai-button-loader .box:nth-child(3) {
+  inset: 7%;
+  z-index: 97;
+  border-color: rgba(56, 189, 248, 0.45);
+  animation-delay: 0.4s;
+}
+
+/* Ripple Layer 4 */
+.ai-button-loader .box:nth-child(4) {
+  inset: 3%;
+  z-index: 96;
+  border-color: rgba(56, 189, 248, 0.3);
+  animation-delay: 0.6s;
+}
+
+/* Outermost Ripple Layer 5 */
+.ai-button-loader .box:nth-child(5) {
+  inset: 0%;
+  z-index: 95;
+  border-color: rgba(56, 189, 248, 0.15);
+  animation-delay: 0.8s;
+}
+
+/* Center Logo Container */
+.ai-button-loader .logo {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  padding: 18%;
+  pointer-events: none;
+}
+
+/* App Logo in Middle */
+.ai-button-loader .logo .ai-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.75));
+  animation: ai-logo-pulse var(--duration) infinite ease-in-out;
+  user-select: none;
+}
+
+/* Online Status Green Indicator Dot */
+.ai-button-loader .online-dot {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 9px;
+  height: 9px;
+  background: #10B981;
+  border: 1.5px solid #000000;
+  border-radius: 50%;
+  z-index: 100;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.7);
+  animation: ai-dot-pulse 2s infinite ease-in-out;
+}
+
+/* Close state styling when chat is open */
+.ai-button-loader.open .box {
+  animation: none;
+}
+
+.ai-button-loader.open .box:nth-child(1) {
+  background: rgba(15, 23, 42, 0.85);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+}
+
+.ai-button-loader.open .box:not(:nth-child(1)) {
+  opacity: 0.2;
+}
+
+/* Ripple Animation */
+@keyframes ai-ripple {
+  0% {
+    transform: scale(1);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px;
+  }
+  50% {
+    transform: scale(1.18);
+    box-shadow: rgba(56, 189, 248, 0.35) 0px 18px 16px -0px;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px;
+  }
+}
+
+/* Center App Logo Glowing Pulse */
+@keyframes ai-logo-pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.85;
+    filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.5));
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+    filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.95)) drop-shadow(0 0 3px #ffffff);
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.85;
+    filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.5));
+  }
+}
+
+@keyframes ai-dot-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.9);
+  }
+}

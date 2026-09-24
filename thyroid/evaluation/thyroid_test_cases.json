@@ -1,0 +1,212 @@
+{
+  "clinical_reports": [
+    {
+      "case_id": "TEST_1_NORMAL",
+      "inputs": {
+        "age": 35,
+        "sex": "F",
+        "tsh": 1.8,
+        "t3": 1.5,
+        "tt4": 105.0,
+        "t4u": 0.95,
+        "fti": 110.0
+      },
+      "output": {
+        "prediction": "Normal Thyroid Function Signal",
+        "class": 1,
+        "disorder_probability": 0.0113,
+        "normal_probability": 0.9887,
+        "probabilities": {
+          "0": 0.0113,
+          "1": 0.9887
+        },
+        "model_version": "1.0",
+        "features_evaluated": {
+          "age": 35.0,
+          "tsh": 1.8,
+          "t3": 1.5,
+          "tt4": 105.0,
+          "t4u": 0.95,
+          "fti": 110.0
+        },
+        "disclaimer": "This is a machine-learning-based health analysis and is not a medical diagnosis."
+      }
+    },
+    {
+      "case_id": "TEST_2_MODERATE",
+      "inputs": {
+        "age": 48,
+        "sex": "F",
+        "tsh": 6.8,
+        "t3": 1.1,
+        "tt4": 75.0,
+        "t4u": 1.05,
+        "fti": 71.0,
+        "query_hypothyroid": "yes"
+      },
+      "output": {
+        "prediction": "Elevated Thyroid Disorder Signal",
+        "class": 0,
+        "disorder_probability": 0.7162,
+        "normal_probability": 0.2838,
+        "probabilities": {
+          "0": 0.7162,
+          "1": 0.2838
+        },
+        "model_version": "1.0",
+        "features_evaluated": {
+          "age": 48.0,
+          "tsh": 6.8,
+          "t3": 1.1,
+          "tt4": 75.0,
+          "t4u": 1.05,
+          "fti": 71.0
+        },
+        "disclaimer": "This is a machine-learning-based health analysis and is not a medical diagnosis."
+      }
+    },
+    {
+      "case_id": "TEST_3_SEVERE",
+      "inputs": {
+        "age": 55,
+        "sex": "F",
+        "tsh": 35.0,
+        "t3": 0.5,
+        "tt4": 30.0,
+        "t4u": 1.2,
+        "fti": 25.0,
+        "on_thyroxine": "no",
+        "query_hypothyroid": "yes",
+        "goitre": "yes"
+      },
+      "output": {
+        "prediction": "Elevated Thyroid Disorder Signal",
+        "class": 0,
+        "disorder_probability": 0.9449,
+        "normal_probability": 0.0551,
+        "probabilities": {
+          "0": 0.9449,
+          "1": 0.0551
+        },
+        "model_version": "1.0",
+        "features_evaluated": {
+          "age": 55.0,
+          "tsh": 35.0,
+          "t3": 0.5,
+          "tt4": 30.0,
+          "t4u": 1.2,
+          "fti": 25.0
+        },
+        "disclaimer": "This is a machine-learning-based health analysis and is not a medical diagnosis."
+      }
+    }
+  ],
+  "missing_data_scenarios": [
+    {
+      "case_id": "AGE_SEX_ONLY",
+      "inputs": {
+        "age": 42,
+        "sex": "M"
+      },
+      "output": {
+        "prediction": "Normal Thyroid Function Signal",
+        "class": 1,
+        "disorder_probability": 0.0389,
+        "normal_probability": 0.9611,
+        "probabilities": {
+          "0": 0.0389,
+          "1": 0.9611
+        },
+        "model_version": "1.0",
+        "features_evaluated": {
+          "age": 42.0
+        },
+        "disclaimer": "This is a machine-learning-based health analysis and is not a medical diagnosis."
+      }
+    },
+    {
+      "case_id": "AGE_SEX_TSH",
+      "inputs": {
+        "age": 42,
+        "sex": "M",
+        "tsh": 1.4
+      },
+      "output": {
+        "prediction": "Normal Thyroid Function Signal",
+        "class": 1,
+        "disorder_probability": 0.0356,
+        "normal_probability": 0.9644,
+        "probabilities": {
+          "0": 0.0356,
+          "1": 0.9644
+        },
+        "model_version": "1.0",
+        "features_evaluated": {
+          "age": 42.0,
+          "tsh": 1.4
+        },
+        "disclaimer": "This is a machine-learning-based health analysis and is not a medical diagnosis."
+      }
+    },
+    {
+      "case_id": "AGE_SEX_TSH_T3_T4",
+      "inputs": {
+        "age": 42,
+        "sex": "M",
+        "tsh": 1.4,
+        "t3": 1.6,
+        "tt4": 112.0
+      },
+      "output": {
+        "prediction": "Normal Thyroid Function Signal",
+        "class": 1,
+        "disorder_probability": 0.0303,
+        "normal_probability": 0.9697,
+        "probabilities": {
+          "0": 0.0303,
+          "1": 0.9697
+        },
+        "model_version": "1.0",
+        "features_evaluated": {
+          "age": 42.0,
+          "tsh": 1.4,
+          "t3": 1.6,
+          "tt4": 112.0
+        },
+        "disclaimer": "This is a machine-learning-based health analysis and is not a medical diagnosis."
+      }
+    },
+    {
+      "case_id": "FULL_REPORT",
+      "inputs": {
+        "age": 35,
+        "sex": "F",
+        "tsh": 1.8,
+        "t3": 1.5,
+        "tt4": 105.0,
+        "t4u": 0.95,
+        "fti": 110.0
+      },
+      "output": {
+        "prediction": "Normal Thyroid Function Signal",
+        "class": 1,
+        "disorder_probability": 0.0113,
+        "normal_probability": 0.9887,
+        "probabilities": {
+          "0": 0.0113,
+          "1": 0.9887
+        },
+        "model_version": "1.0",
+        "features_evaluated": {
+          "age": 35.0,
+          "tsh": 1.8,
+          "t3": 1.5,
+          "tt4": 105.0,
+          "t4u": 0.95,
+          "fti": 110.0
+        },
+        "disclaimer": "This is a machine-learning-based health analysis and is not a medical diagnosis."
+      }
+    }
+  ]
+}
