@@ -39,7 +39,7 @@ export default function ReportUploadModal({
 
   const sampleGeneralLabReport = `PATIENT COMPREHENSIVE LAB REPORT
 Report ID: LAB-2026-9921
-Patient: Akshat Vishwakarma
+Patient: John Doe
 Date of Collection: 24-Sep-2026
 
 THYROID PANEL:

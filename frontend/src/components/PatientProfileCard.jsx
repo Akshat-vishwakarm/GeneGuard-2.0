@@ -465,7 +465,7 @@ export default function PatientProfileCard({
               <input
                 type="text"
                 className="form-control"
-                placeholder="e.g. Akshat Vishwakarma"
+                placeholder="e.g. John Doe"
                 value={formData.name}
                 onChange={(e) => handleChange('name', e.target.value)}
               />
@@ -481,7 +481,7 @@ export default function PatientProfileCard({
                 min="1"
                 max="125"
                 className="form-control"
-                placeholder="e.g. 21"
+                placeholder="e.g. 45"
                 value={formData.age}
                 onChange={(e) => handleChange('age', e.target.value)}
                 required
@@ -517,7 +517,7 @@ export default function PatientProfileCard({
                 min="40"
                 max="260"
                 className="form-control"
-                placeholder="e.g. 183"
+                placeholder="e.g. 175"
                 value={formData.height_cm}
                 onChange={(e) => handleChange('height_cm', e.target.value)}
                 required
@@ -535,7 +535,7 @@ export default function PatientProfileCard({
                 min="15"
                 max="350"
                 className="form-control"
-                placeholder="e.g. 100"
+                placeholder="e.g. 70"
                 value={formData.weight_kg}
                 onChange={(e) => handleChange('weight_kg', e.target.value)}
                 required

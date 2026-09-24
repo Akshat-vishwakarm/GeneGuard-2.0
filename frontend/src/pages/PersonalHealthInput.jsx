@@ -331,7 +331,7 @@ export default function PersonalHealthInput({
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="e.g. Akshat"
+                    placeholder="e.g. John Doe"
                     value={selfData.name || ''}
                     onChange={(e) => handleInputChange('name', e.target.value)}
                   />
