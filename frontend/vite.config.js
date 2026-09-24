@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     port: 5173,
     watch: {
-      ignored: ['**/*.mp4']
+      ignored: ['**/dist/**', '**/*.mp4', '**/*.webm']
     },
     proxy: {
       // Proxy original medical chatbot app directly under http://localhost:5173/chatbot

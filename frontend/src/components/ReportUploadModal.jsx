@@ -14,6 +14,7 @@ import {
   RotateCcw
 } from 'lucide-react';
 import { MODEL_FEATURE_REGISTRY } from '../utils/normalValueRegistry';
+import { API_BASE } from '../utils/apiConfig';
 
 export default function ReportUploadModal({
   isOpen,
@@ -79,7 +80,7 @@ Hemoglobin: 14.6 g/dL  (Ref: 13.5 - 17.5)`;
       if (selectedFile) {
         const formData = new FormData();
         formData.append('file', selectedFile);
-        response = await fetch('http://localhost:5000/api/extract-report', {
+        response = await fetch(`${API_BASE}/extract-report`, {
           method: 'POST',
           body: formData
         });
@@ -90,7 +91,7 @@ Hemoglobin: 14.6 g/dL  (Ref: 13.5 - 17.5)`;
           setIsLoading(false);
           return;
         }
-        response = await fetch('http://localhost:5000/api/extract-report', {
+        response = await fetch(`${API_BASE}/extract-report`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ report_text: textToUse })
@@ -129,7 +130,7 @@ Hemoglobin: 14.6 g/dL  (Ref: 13.5 - 17.5)`;
         setErrorMsg(data.message || 'No recognizable laboratory measurements found in the uploaded report.');
       }
     } catch (err) {
-      setErrorMsg('Unable to connect to backend extraction service (http://localhost:5000). Please verify backend is running.');
+      setErrorMsg('Unable to connect to backend extraction service. Please verify backend is running.');
     } finally {
       setIsLoading(false);
     }

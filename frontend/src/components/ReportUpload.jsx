@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Upload, FileText, CheckCircle, AlertCircle, X } from 'lucide-react';
+import { API_BASE } from '../utils/apiConfig';
 
 export default function ReportUpload({ isOpen, onClose, onApplyExtractedValues }) {
   const [reportText, setReportText] = useState('');
@@ -33,7 +34,7 @@ Height: 176 cm`;
     setErrorMsg(null);
 
     try {
-      const response = await fetch('http://localhost:5000/api/extract-report', {
+      const response = await fetch(`${API_BASE}/extract-report`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ report_text: reportText })
@@ -50,7 +51,7 @@ Height: 176 cm`;
         setErrorMsg(data.message || 'Failed to extract measurements.');
       }
     } catch (err) {
-      setErrorMsg('Unable to connect to backend server at http://localhost:5000. Please start the backend.');
+      setErrorMsg('Unable to connect to backend server. Please verify backend is running.');
     } finally {
       setIsLoading(false);
     }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Upload, FileText, CheckCircle2, AlertCircle, Edit2, FileUp, Check } from 'lucide-react';
+import { API_BASE } from '../utils/apiConfig';
 
 export default function ThyroidReportSection({ onApplyVerifiedReportData }) {
   const [file, setFile] = useState(null);
@@ -105,7 +106,7 @@ Result: 6.6         (Ref Range: 6.0 - 12.0)`;
     formData.append('file', uploadedFile);
 
     try {
-      const response = await fetch('http://localhost:5000/api/extract-report', {
+      const response = await fetch(`${API_BASE}/extract-report`, {
         method: 'POST',
         body: formData
       });
@@ -131,7 +132,7 @@ Result: 6.6         (Ref Range: 6.0 - 12.0)`;
           // ignore
         }
       }
-      setErrorMsg('Unable to connect to backend server at http://localhost:5000. Please start the backend with: python backend/app.py');
+      setErrorMsg('Unable to connect to backend server. Please verify backend is running.');
     } finally {
       setIsExtracting(false);
     }
@@ -145,7 +146,7 @@ Result: 6.6         (Ref Range: 6.0 - 12.0)`;
     setIsFallbackMode(false);
 
     try {
-      const response = await fetch('http://localhost:5000/api/extract-report', {
+      const response = await fetch(`${API_BASE}/extract-report`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ report_text: textToExtract })
@@ -166,7 +167,7 @@ Result: 6.6         (Ref Range: 6.0 - 12.0)`;
         setIsFallbackMode(true);
         return;
       }
-      setErrorMsg('Unable to connect to backend server at http://localhost:5000. Please start the backend with: python backend/app.py');
+      setErrorMsg('Unable to connect to backend server. Please verify backend is running.');
     } finally {
       setIsExtracting(false);
     }
@@ -176,7 +177,7 @@ Result: 6.6         (Ref Range: 6.0 - 12.0)`;
     if (!extractedItems || extractedItems.length === 0) return;
 
     try {
-      const response = await fetch('http://localhost:5000/api/confirm-report', {
+      const response = await fetch(`${API_BASE}/confirm-report`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ verified_items: extractedItems })

@@ -19,8 +19,7 @@ import {
   mapProfileToModuleInputs,
   calculateBmi
 } from './utils/normalValueRegistry';
-
-const API_BASE = 'http://localhost:5000/api';
+import { API_BASE } from './utils/apiConfig';
 
 export default function App() {
   const [inTitleScreen, setInTitleScreen] = useState(true);
