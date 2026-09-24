@@ -11,7 +11,12 @@ import joblib
 import pickle
 import pandas as pd
 import numpy as np
-import shap
+try:
+    import shap
+    HAS_SHAP = True
+except (ImportError, Exception):
+    shap = None
+    HAS_SHAP = False
 
 from .model_registry import MODEL_REGISTRY
 from .feature_mapper import validate_and_map_features
@@ -38,15 +43,18 @@ class PredictionService:
             self.models["cardiovascular"] = c_model
             self.thresholds["cardiovascular"] = c_thresh
 
-            try:
-                preproc = c_model.named_steps["preprocessor"]
-                rf_clf = c_model.named_steps["classifier"]
-                self.preprocessors["cardiovascular"] = preproc
-                self.feature_names["cardiovascular"] = preproc.get_feature_names_out()
-                self.explainers["cardiovascular"] = shap.TreeExplainer(rf_clf)
-                print(f"[GeneGuard] Loaded Cardiovascular model (Threshold: {c_thresh}).")
-            except Exception as e:
-                print(f"[GeneGuard] Warning initializing SHAP for Cardiovascular: {e}")
+            if HAS_SHAP and shap is not None:
+                try:
+                    preproc = c_model.named_steps["preprocessor"]
+                    rf_clf = c_model.named_steps["classifier"]
+                    self.preprocessors["cardiovascular"] = preproc
+                    self.feature_names["cardiovascular"] = preproc.get_feature_names_out()
+                    self.explainers["cardiovascular"] = shap.TreeExplainer(rf_clf)
+                    print(f"[GeneGuard] Loaded Cardiovascular model (Threshold: {c_thresh}).")
+                except Exception as e:
+                    print(f"[GeneGuard] Warning initializing SHAP for Cardiovascular: {e}")
+            else:
+                print(f"[GeneGuard] Loaded Cardiovascular model (Threshold: {c_thresh}, SHAP explainer skipped).")
 
         # 2. Metabolic
         m_conf = MODEL_REGISTRY["metabolic"]

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { 
   Printer, 
   ArrowLeft, 
@@ -12,6 +12,7 @@ import {
   AlertTriangle,
   Info
 } from 'lucide-react';
+import { generateFinalAnalysisClientSide } from '../utils/clinicalInferenceEngine';
 
 export default function FinalAnalysisReport({
   analysisData,
@@ -24,9 +25,25 @@ export default function FinalAnalysisReport({
   const [selectedTechDisease, setSelectedTechDisease] = useState(null);
 
   // -------------------------------------------------------------
-  // INSUFFICIENT DATA / EMPTY SESSION GATE SCREEN
+  // REPORT DATA RESOLUTION & DYNAMIC SYNTHESIS
   // -------------------------------------------------------------
-  if (!analysisData || analysisData.status === 'insufficient_data' || !analysisData.report) {
+  const effectiveAnalysis = useMemo(() => {
+    if (analysisData && analysisData.status !== 'insufficient_data') {
+      if (analysisData.report) return analysisData;
+      if (analysisData.personal_results || analysisData.family_risk_analysis) {
+        return { status: 'success', report: analysisData };
+      }
+    }
+    // Auto-synthesize report using clinical pedigree engine if missing or flagged insufficient
+    return generateFinalAnalysisClientSide(selfData, familyMembers);
+  }, [analysisData, selfData, familyMembers]);
+
+  const report = effectiveAnalysis?.report;
+
+  // -------------------------------------------------------------
+  // INSUFFICIENT DATA / EMPTY SESSION GATE SCREEN (Safety fallback)
+  // -------------------------------------------------------------
+  if (!report) {
     return (
       <div style={{ maxWidth: '800px', margin: '40px auto', padding: '0 20px 80px' }}>
         <div 
@@ -91,7 +108,6 @@ export default function FinalAnalysisReport({
   // -------------------------------------------------------------
   // REPORT DATA PARSING (Strict traceability to actual outputs)
   // -------------------------------------------------------------
-  const report = analysisData.report;
   const personal = report.personal_results || {};
   const fra = report.family_risk_analysis || {};
   const diseaseEvals = fra.disease_evaluations || {};

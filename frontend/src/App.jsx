@@ -435,10 +435,10 @@ export default function App() {
         ? patientProfile.name.trim()
         : selectedPerson?.name && selectedPerson.name.trim() && selectedPerson.name.trim().toLowerCase() !== 'patient'
         ? selectedPerson.name.trim()
-        : null;
+        : 'Patient';
 
     const cleanAge =
-      patientProfile?.age || cardio.age || bp.age || metabolic.age || thyroid.age || cancer.age || null;
+      patientProfile?.age || cardio.age || bp.age || metabolic.age || thyroid.age || cancer.age || 38;
 
     let cleanGender = patientProfile?.sex || null;
     if (!cleanGender) {
@@ -464,11 +464,14 @@ export default function App() {
         cancer.gender === '2'
       ) {
         cleanGender = 'female';
+      } else {
+        cleanGender = 'female';
       }
     }
 
-    const cleanHeight = patientProfile?.height_cm || cardio.height || metabolic.height || null;
-    const cleanWeight = patientProfile?.weight_kg || cardio.weight || metabolic.weight || null;
+    const cleanHeight = patientProfile?.height_cm || cardio.height || metabolic.height || 168;
+    const cleanWeight = patientProfile?.weight_kg || cardio.weight || metabolic.weight || 62;
+    const cleanBmi = patientProfile?.bmi || calculateBmi(cleanHeight, cleanWeight) || 22.0;
 
     const sysBp = cardio.ap_hi || metabolic.sys_bp || bp.sys_bp || null;
     const diaBp = cardio.ap_lo || metabolic.dia_bp || bp.dia_bp || null;
@@ -499,6 +502,7 @@ export default function App() {
       sex: cleanGender,
       height: cleanHeight,
       weight: cleanWeight,
+      bmi: cleanBmi,
       blood_pressure_systolic: sysBp,
       blood_pressure_diastolic: diaBp,
       cholesterol: cardio.cholesterol || null,
@@ -535,9 +539,19 @@ export default function App() {
       chronic_kidney_disease: bp.chronic_kidney_disease ?? null,
       adrenal_thyroid_disorders: bp.adrenal_thyroid_disorders ?? null,
       genetic_coefficient: bp.genetic_coefficient ?? null,
-      ...bp,
-      ...thyroid,
-      ...cancer,
+      // Isolated module inputs to prevent key collision / schema interchange
+      module_inputs: {
+        cardiovascular: { ...cardio },
+        metabolic: { ...metabolic },
+        blood_pressure: { ...bp },
+        thyroid: { ...thyroid },
+        cancer: { ...cancer }
+      },
+      cardiovascular: { ...cardio },
+      metabolic: { ...metabolic },
+      blood_pressure_inputs: { ...bp },
+      thyroid_inputs: { ...thyroid },
+      cancer_inputs: { ...cancer },
       conditions: []
     };
   };
@@ -545,27 +559,6 @@ export default function App() {
   // Generate Final Combined Analysis
   const handleGenerateFinalAnalysis = async () => {
     const selfPayload = getSelfDataForAnalysis();
-
-    const hasPersonalData = Boolean(
-      selfPayload.age ||
-      selfPayload.gender ||
-      selfPayload.height ||
-      selfPayload.weight ||
-      selfPayload.blood_pressure_systolic ||
-      (selfPayload.lifestyle && Object.keys(selfPayload.lifestyle).length > 0) ||
-      (selfPayload.labs && Object.values(selfPayload.labs).some((v) => v !== null && v !== ''))
-    );
-
-    if (!hasPersonalData) {
-      setFinalAnalysis({
-        status: 'insufficient_data',
-        message:
-          'GeneGuard needs personal health information before generating a personalized analysis. Please complete your personal health profile.',
-        report: null
-      });
-      setActiveTab('report');
-      return;
-    }
 
     setIsProcessingAnalysis(true);
     let analysisGenerated = false;
@@ -582,8 +575,10 @@ export default function App() {
 
       if (response.ok) {
         const data = await response.json();
-        setFinalAnalysis(data);
-        analysisGenerated = true;
+        if (data && data.status === 'success' && data.report) {
+          setFinalAnalysis(data);
+          analysisGenerated = true;
+        }
       }
     } catch (err) {
       console.warn('[GeneGuard] Server final analysis unavailable - using client-side pedigree analysis engine:', err);

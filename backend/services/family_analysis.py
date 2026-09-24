@@ -157,8 +157,17 @@ def map_unified_self_data_to_models(self_data: dict) -> dict:
     elif is_male is True:
         bp_inputs["pregnancy"] = 0
         
-    if self_data.get("smoking") not in [None, ""]:
-        bp_inputs["smoking"] = int(self_data["smoking"])
+    raw_bp_smoking = (
+        (self_data.get("module_inputs") or {}).get("blood_pressure", {}).get("smoking")
+        or (self_data.get("blood_pressure_inputs") or {}).get("smoking")
+        or self_data.get("smoking")
+    )
+    if raw_bp_smoking not in [None, ""]:
+        try:
+            val = int(raw_bp_smoking)
+            bp_inputs["smoking"] = 1 if val == 1 else (1 if val >= 4 else 0)
+        except:
+            bp_inputs["smoking"] = 0
     elif smoking_val not in [None, ""]:
         bp_inputs["smoking"] = 1 if str(smoking_val).lower() in ["1", "yes", "true", "current", "former"] else 0
 
@@ -232,6 +241,19 @@ def map_unified_self_data_to_models(self_data: dict) -> dict:
             try:
                 cancer_inputs[cf] = int(self_data["clubbing_of_finger_nails"])
             except: pass
+
+    # If client passed isolated module_inputs dictionaries, merge them directly to preserve exact user inputs
+    mod_inputs = self_data.get("module_inputs") or {}
+    if isinstance(mod_inputs.get("cardiovascular"), dict):
+        cardio_inputs.update(mod_inputs["cardiovascular"])
+    if isinstance(mod_inputs.get("metabolic"), dict):
+        metabolic_inputs.update(mod_inputs["metabolic"])
+    if isinstance(mod_inputs.get("blood_pressure"), dict):
+        bp_inputs.update(mod_inputs["blood_pressure"])
+    if isinstance(mod_inputs.get("thyroid"), dict):
+        thyroid_inputs.update(mod_inputs["thyroid"])
+    if isinstance(mod_inputs.get("cancer"), dict):
+        cancer_inputs.update(mod_inputs["cancer"])
 
     return {
         "cardiovascular": cardio_inputs,

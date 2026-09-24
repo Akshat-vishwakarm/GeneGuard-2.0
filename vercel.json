@@ -6,6 +6,18 @@
   "outputDirectory": "frontend/dist",
   "rewrites": [
     {
+      "source": "/model-info",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/golden-test",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.py"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

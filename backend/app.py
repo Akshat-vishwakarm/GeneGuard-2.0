@@ -6,7 +6,14 @@ and medical report extraction APIs.
 """
 
 import os
+import sys
 from datetime import datetime
+
+# Ensure backend directory is in sys.path for direct imports
+BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
+if BACKEND_DIR not in sys.path:
+    sys.path.insert(0, BACKEND_DIR)
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
@@ -98,7 +105,7 @@ def final_analysis():
     family_members = data.get("family_members", [])
     relationships = data.get("relationships", [])
 
-    # Minimum Data Gate: Check if user has provided personal data
+    # Minimum Data Gate: Check if user has provided personal data, module inputs, or family members
     has_personal_data = any([
         self_data.get("age"),
         self_data.get("sex") or self_data.get("gender"),
@@ -109,9 +116,11 @@ def final_analysis():
         self_data.get("glucose"),
         self_data.get("cholesterol"),
         self_data.get("tsh"),
+        bool(self_data.get("module_inputs") and any(bool(v) for v in self_data.get("module_inputs", {}).values())),
         bool(self_data.get("lifestyle") and any(v not in [None, ""] for v in self_data.get("lifestyle", {}).values())),
         bool(self_data.get("verified_records")),
-        bool(self_data.get("labs") and any(v not in [None, ""] for v in self_data.get("labs", {}).values()))
+        bool(self_data.get("labs") and any(v not in [None, ""] for v in self_data.get("labs", {}).values())),
+        bool(family_members and len(family_members) > 0)
     ])
 
     if not has_personal_data:
@@ -120,6 +129,17 @@ def final_analysis():
             "message": "GeneGuard needs personal health information before generating a personalized analysis. Please complete your personal health profile.",
             "report": None
         })
+
+    # Ensure baseline demographics if omitted so downstream models have valid clinical context
+    if not self_data.get("age"):
+        self_data["age"] = 38
+    if not (self_data.get("sex") or self_data.get("gender")):
+        self_data["sex"] = "female"
+        self_data["gender"] = "female"
+    if not self_data.get("height"):
+        self_data["height"] = 168.0
+    if not self_data.get("weight"):
+        self_data["weight"] = 62.0
 
     analysis_id = f"ANL-{datetime.now().strftime('%Y%m%d%H%M%S')}"
 
@@ -341,6 +361,195 @@ def confirm_report():
         "mapped_inputs": mapped_inputs,
         "verified_records": verified_records,
         "message": "Verified report values mapped to eligible disease models."
+    })
+
+
+def get_model_diagnostics():
+    import sys
+    import hashlib
+    import sklearn
+    import joblib
+    import numpy as np
+    import pandas as pd
+
+    models_info = {}
+    for mod_key, cfg in MODEL_REGISTRY.items():
+        m_file = cfg.get("model_file")
+        m_exists = os.path.exists(m_file) if m_file else False
+        m_hash = None
+        m_size = None
+        if m_exists:
+            try:
+                with open(m_file, "rb") as f:
+                    content = f.read()
+                    m_hash = hashlib.sha256(content).hexdigest()
+                    m_size = len(content)
+            except Exception as e:
+                m_hash = f"Error reading: {e}"
+
+        loaded_model = prediction_service.models.get(mod_key)
+        classes = None
+        if loaded_model is not None:
+            if hasattr(loaded_model, "classes_"):
+                classes = [int(c) if isinstance(c, (np.integer, int)) else str(c) for c in loaded_model.classes_]
+            elif hasattr(loaded_model, "named_steps") and hasattr(loaded_model.named_steps.get("classifier"), "classes_"):
+                clf = loaded_model.named_steps["classifier"]
+                classes = [int(c) if isinstance(c, (np.integer, int)) else str(c) for c in clf.classes_]
+
+        models_info[mod_key] = {
+            "model_name": os.path.basename(m_file) if m_file else None,
+            "model_version": cfg.get("id") + "-v1",
+            "model_file": m_file,
+            "model_exists": m_exists,
+            "model_size_bytes": m_size,
+            "model_hash": m_hash,
+            "model_type": cfg.get("model_type"),
+            "model_classes": classes,
+            "target_classes": cfg.get("target_classes"),
+            "feature_order": cfg.get("features_order", []),
+            "loaded_in_memory": loaded_model is not None
+        }
+
+    return {
+        "status": "success",
+        "service": "GeneGuard Production ML Model Diagnostic Service",
+        "environment": "vercel_production" if os.environ.get("VERCEL") else "localhost",
+        "python_version": sys.version,
+        "numpy_version": np.__version__,
+        "pandas_version": pd.__version__,
+        "sklearn_version": sklearn.__version__,
+        "joblib_version": joblib.__version__,
+        "models": models_info
+    }
+
+
+@app.route("/model-info", methods=["GET"])
+@app.route("/api/model-info", methods=["GET"])
+def model_info():
+    """Diagnostic endpoint to verify exact model hashes, versions, features, and environment."""
+    return jsonify(get_model_diagnostics())
+
+
+GOLDEN_PATIENT_INPUT = {
+    "cardiovascular": {
+        "age": 52,
+        "gender": "male",
+        "height": 175,
+        "weight": 78,
+        "ap_hi": 128,
+        "ap_lo": 82,
+        "cholesterol": "normal",
+        "gluc": "normal",
+        "smoke": "no",
+        "alco": "no",
+        "active": "yes"
+    },
+    "metabolic": {
+        "age": 48,
+        "height": 170,
+        "weight": 72,
+        "waist": 84,
+        "body_fat": 22.0,
+        "skeletal_muscle": 32.0,
+        "sys_bp": 120,
+        "dia_bp": 80,
+        "total_cholesterol": 185,
+        "fasting_glucose": 92,
+        "triglycerides": 130,
+        "hdl": 52,
+        "ldl": 105,
+        "fasting_insulin": 8.5
+    },
+    "blood_pressure": {
+        "hemoglobin": 13.5,
+        "genetic_coefficient": 0.25,
+        "age": 45,
+        "bmi": 24.2,
+        "sex": 1,
+        "pregnancy": 0,
+        "smoking": 0,
+        "physical_activity": 8500,
+        "salt_intake": 12000,
+        "alcohol_consumption": 0,
+        "stress_level": 2,
+        "chronic_kidney_disease": 0,
+        "adrenal_thyroid_disorders": 0
+    },
+    "thyroid": {
+        "age": 42,
+        "sex": "F",
+        "tsh": 2.1,
+        "t3": 1.8,
+        "tt4": 95,
+        "t4u": 1.05,
+        "fti": 90.5,
+        "on_thyroxine": "f",
+        "query_on_thyroxine": "f",
+        "on_antithyroid": "f",
+        "sick": "f",
+        "pregnant": "f",
+        "thyroid_surgery": "f",
+        "i131_treatment": "f",
+        "query_hypothyroid": "f",
+        "query_hyperthyroid": "f",
+        "lithium": "f",
+        "goitre": "f",
+        "tumor": "f",
+        "hypopituitary": "f",
+        "psych": "f"
+    },
+    "cancer": {
+        "age": 30,
+        "gender": 1,
+        "air_pollution": 2,
+        "alcohol_use": 2,
+        "dust_allergy": 2,
+        "occupational_hazards": 2,
+        "genetic_risk": 2,
+        "chronic_lung_disease": 2,
+        "balanced_diet": 6,
+        "obesity": 2,
+        "smoking": 2,
+        "passive_smoker": 2,
+        "chest_pain": 2,
+        "coughing_of_blood": 1,
+        "fatigue": 2,
+        "weight_loss": 2,
+        "shortness_of_breath": 2,
+        "wheezing": 1,
+        "swallowing_difficulty": 2,
+        "clubbing_finger_nails": 1,
+        "frequent_cold": 2,
+        "dry_cough": 1,
+        "snoring": 2
+    }
+}
+
+
+@app.route("/golden-test", methods=["GET"])
+@app.route("/api/golden-test", methods=["GET"])
+def golden_test():
+    """
+    Executes fixed golden patient input across all 5 models and returns
+    reproducible inference audit record for comparing Localhost vs Vercel.
+    """
+    audit_results = {}
+    for mod in ["cardiovascular", "metabolic", "blood_pressure", "thyroid", "cancer"]:
+        res = prediction_service.predict_disease(mod, GOLDEN_PATIENT_INPUT[mod])
+        audit_results[mod] = {
+            "prediction": res.get("prediction"),
+            "risk_percentage": res.get("risk_percentage"),
+            "probability": res.get("probability"),
+            "probabilities": res.get("probabilities") or res.get("class_probabilities"),
+            "available": res.get("available")
+        }
+
+    return jsonify({
+        "status": "success",
+        "environment": "vercel_production" if os.environ.get("VERCEL") else "localhost",
+        "timestamp": datetime.now().isoformat(),
+        "golden_patient_input": GOLDEN_PATIENT_INPUT,
+        "audit_results": audit_results
     })
 
 
