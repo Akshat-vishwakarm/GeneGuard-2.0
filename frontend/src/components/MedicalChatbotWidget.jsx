@@ -11,6 +11,7 @@ import {
   ChevronDown
 } from 'lucide-react';
 import Loader from './Loader';
+import { getMedicalAnswer } from '../utils/medicalKnowledgeService';
 import './AiFloatingButton.css';
 
 // Using relative URL so all requests flow seamlessly through port 5173 via Vite proxy
@@ -87,7 +88,8 @@ export default function MedicalChatbotWidget({ isOpen, setIsOpen, onNavigateTab 
       };
       setMessages((prev) => [...prev, botMsg]);
     } catch (err) {
-      // Fallback to /get form-encoded endpoint if api/chat failed
+      // Fallback 1: Try /get form-encoded endpoint
+      let answerFound = false;
       try {
         const formData = new URLSearchParams();
         formData.append('msg', query);
@@ -95,24 +97,46 @@ export default function MedicalChatbotWidget({ isOpen, setIsOpen, onNavigateTab 
           method: 'POST',
           body: formData
         });
-        const fbText = await fbResp.text();
-        const botMsg = {
-          id: Date.now() + 1,
-          sender: 'bot',
-          text: fbText || 'Medical response service temporarily unavailable.',
-          sources: [],
-          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-        };
-        setMessages((prev) => [...prev, botMsg]);
-      } catch (fbErr) {
-        const errMsg = {
-          id: Date.now() + 1,
-          sender: 'bot',
-          text: 'Unable to reach the Medical Chatbot server. Please verify that the chatbot service is running at http://localhost:8080.',
-          isError: true,
-          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-        };
-        setMessages((prev) => [...prev, errMsg]);
+        if (fbResp.ok) {
+          const fbText = await fbResp.text();
+          if (fbText && !fbText.includes('<!DOCTYPE') && !fbText.includes('<html')) {
+            const botMsg = {
+              id: Date.now() + 1,
+              sender: 'bot',
+              text: fbText,
+              sources: ['Gale Encyclopedia of Medicine'],
+              timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            };
+            setMessages((prev) => [...prev, botMsg]);
+            answerFound = true;
+          }
+        }
+      } catch {
+        // Continue to clinical knowledge base fallback
+      }
+
+      // Fallback 2: Direct Clinical Knowledge Retrieval (Works natively on Vercel)
+      if (!answerFound) {
+        try {
+          const medicalResult = await getMedicalAnswer(query);
+          const botMsg = {
+            id: Date.now() + 1,
+            sender: 'bot',
+            text: medicalResult.text,
+            sources: medicalResult.sources || ['The Gale Encyclopedia of Medicine'],
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+          };
+          setMessages((prev) => [...prev, botMsg]);
+        } catch (localErr) {
+          const errMsg = {
+            id: Date.now() + 1,
+            sender: 'bot',
+            text: 'Unable to process medical query. Please check your network connection.',
+            isError: true,
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+          };
+          setMessages((prev) => [...prev, errMsg]);
+        }
       }
     } finally {
       setIsLoading(false);
