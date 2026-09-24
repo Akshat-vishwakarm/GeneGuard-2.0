@@ -5,6 +5,7 @@ import PredictionCard from '../components/PredictionCard';
 import FamilyHistoryEvidence from '../components/FamilyHistoryEvidence';
 import PatientProfileCard from '../components/PatientProfileCard';
 import ThyroidReportSection from '../components/ThyroidReportSection';
+import { DEFAULT_MODEL_SCHEMAS } from '../data/defaultModelSchemas';
 import {
   Activity,
   RefreshCw,
@@ -43,9 +44,7 @@ export default function HealthInput({
   const [isProfileEditorOpen, setIsProfileEditorOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
 
-  if (!schemas) {
-    return <div style={{ textAlign: 'center', padding: '60px' }}>Loading GeneGuard Model Registry...</div>;
-  }
+  const effectiveSchemas = schemas || DEFAULT_MODEL_SCHEMAS;
 
   const modules = ['cardiovascular', 'metabolic', 'blood_pressure', 'thyroid', 'cancer'];
 
@@ -225,7 +224,7 @@ export default function HealthInput({
           <DiseaseCard
             key={modKey}
             moduleKey={modKey}
-            schema={schemas[modKey]}
+            schema={effectiveSchemas[modKey]}
             isActive={activeModule === modKey}
             onSelect={(k) => setActiveModule(k)}
             predictionResult={predictionResults[modKey]}
@@ -248,7 +247,7 @@ export default function HealthInput({
           <div>
             <DynamicInputForm
               moduleKey={activeModule}
-              schema={schemas[activeModule]}
+              schema={effectiveSchemas[activeModule]}
               formValues={formValues[activeModule] || {}}
               onInputChange={(k, v) => onInputChange(activeModule, k, v)}
               onRunPrediction={onRunPrediction}
@@ -268,7 +267,7 @@ export default function HealthInput({
               <PredictionCard
                 moduleKey={activeModule}
                 result={predictionResults[activeModule]}
-                title={schemas[activeModule]?.name}
+                title={effectiveSchemas[activeModule]?.name}
               />
             ) : (
               <div
@@ -305,7 +304,7 @@ export default function HealthInput({
                   Awaiting Input Completion
                 </h4>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', maxWidth: '300px', lineHeight: 1.5 }}>
-                  Complete the {schemas[activeModule]?.name} parameters on the left or upload a report, then click Run Analysis to execute the trained model.
+                  Complete the {effectiveSchemas[activeModule]?.name} parameters on the left or upload a report, then click Run Analysis to execute the trained model.
                 </p>
               </div>
             )}

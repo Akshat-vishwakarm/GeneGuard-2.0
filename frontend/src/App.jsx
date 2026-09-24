@@ -20,12 +20,13 @@ import {
   calculateBmi
 } from './utils/normalValueRegistry';
 import { API_BASE } from './utils/apiConfig';
+import { DEFAULT_MODEL_SCHEMAS } from './data/defaultModelSchemas';
 
 export default function App() {
   const [inTitleScreen, setInTitleScreen] = useState(true);
   const [activeTab, setActiveTab] = useState('input');
   const [activeModule, setActiveModule] = useState('cardiovascular');
-  const [schemas, setSchemas] = useState(null);
+  const [schemas, setSchemas] = useState(DEFAULT_MODEL_SCHEMAS);
   const [familyList, setFamilyList] = useState([]);
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
 
@@ -105,11 +106,11 @@ export default function App() {
     fetch(`${API_BASE}/models/schema`)
       .then((res) => res.json())
       .then((data) => {
-        if (data.status === 'success') {
+        if (data.status === 'success' && data.models) {
           setSchemas(data.models);
         }
       })
-      .catch((err) => console.error('Failed to load model schemas:', err));
+      .catch((err) => console.warn('[GeneGuard] Backend offline - using bundled clinical model schemas:', err));
 
     fetch(`${API_BASE}/family`)
       .then((res) => res.json())
