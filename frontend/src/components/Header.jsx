@@ -8,7 +8,8 @@ export default function Header({
   setShowReportModal, 
   onResetSession,
   isChatbotOpen,
-  onToggleChatbot 
+  onToggleChatbot,
+  onReturnToTitleScreen
 }) {
   return (
     <header className="navbar">
@@ -16,9 +17,9 @@ export default function Header({
       <div style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
         <div 
           className="nav-brand"
-          onClick={() => setActiveTab('input')}
+          onClick={onReturnToTitleScreen || (() => setActiveTab('input'))}
           style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }}
-          title="GeneGuard Medical AI"
+          title="Return to Title Menu"
         >
           <div className="brand-icon" style={{ background: 'rgba(255, 255, 255, 0.04)', borderColor: 'rgba(255, 255, 255, 0.12)', padding: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
             <img 
@@ -34,6 +35,18 @@ export default function Header({
         </div>
 
         <nav className="nav-links">
+          {onReturnToTitleScreen && (
+            <button
+              className="nav-btn"
+              onClick={onReturnToTitleScreen}
+              title="Return to Title Screen Menu"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              <RotateCcw size={14} />
+              <span>Title Menu</span>
+            </button>
+          )}
+
           <button
             className={`nav-btn ${activeTab === 'input' ? 'active' : ''}`}
             onClick={() => setActiveTab('input')}

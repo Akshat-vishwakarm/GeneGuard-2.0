@@ -1,0 +1,482 @@
+/* ==========================================================================
+   GENEGUARD SCI-FI TITLE SCREEN & GAME-STYLE MAIN MENU
+   Visual Direction: Pure Dark Black, Minimalist Sci-Fi Game UI, Zero Neon Glow,
+   Thin Clean White Chevrons, Razor-Sharp Typography, 150-250ms Smooth Transitions.
+   ========================================================================== */
+
+.title-screen-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  z-index: 100;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Background Video Layer */
+.title-video-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.88;
+}
+
+/* Cinematic Dark Vignette & Contrast Layer (Ensures high contrast legibility without neon) */
+.title-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.78) 75%, #000000 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Subtle Film Grain / Minimal Scanline (very subtle, sci-fi realism) */
+.title-scanlines {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 18, 22, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  opacity: 0.25;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   TOP TELEMETRY HUD BAR
+   ========================================================================== */
+.title-hud-top {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1380px;
+  padding: 32px 40px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+  font-family: 'JetBrains Mono', 'Geist', monospace;
+}
+
+.title-hud-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title-hud-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+/* ==========================================================================
+   CENTER MAIN MENU AREA
+   ========================================================================== */
+.title-menu-center {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 760px;
+  width: 100%;
+  padding: 0 20px;
+  margin: auto 0;
+}
+
+/* Logo Symbol & Title */
+.title-brand-symbol {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 20px;
+  opacity: 0.9;
+  filter: grayscale(100%) brightness(1.2);
+  transition: opacity 250ms ease;
+}
+
+.title-main-heading {
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 300;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+  line-height: 1.1;
+  text-indent: 0.38em; /* balances letter-spacing visually */
+}
+
+.title-sub-heading {
+  margin-top: 14px;
+  font-size: clamp(0.68rem, 1.2vw, 0.78rem);
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.48);
+  text-indent: 0.28em;
+}
+
+/* Hairline Divider */
+.title-divider {
+  width: 48px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.22);
+  margin: 36px auto 44px;
+}
+
+/* ==========================================================================
+   MENU LIST & SMOOTH SELECTION INDICATOR
+   ========================================================================== */
+.sci-fi-menu-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 520px;
+}
+
+.sci-fi-menu-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  width: 100%;
+}
+
+/* Gliding Bracket Indicator Container */
+.menu-selection-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  will-change: transform, opacity;
+  z-index: 5;
+}
+
+/* Chevron Chevrons (< and >) */
+.menu-chevron-bracket {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  will-change: transform;
+}
+
+.menu-chevron-left {
+  left: 50%;
+  /* translated left based on hovered text width dynamically */
+}
+
+.menu-chevron-right {
+  left: 50%;
+  /* translated right based on hovered text width dynamically */
+}
+
+/* Crisp geometric SVG double chevron */
+.menu-chevron-svg {
+  display: block;
+  width: 18px;
+  height: 22px;
+  overflow: visible;
+}
+
+/* Individual Menu Item Button */
+.sci-fi-menu-button {
+  position: relative;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.58);
+  font-family: inherit;
+  font-size: clamp(0.95rem, 1.4vw, 1.08rem);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-indent: 0.22em;
+  transition: color 180ms ease, letter-spacing 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hovered / Focused State (Pure, subtle, no neon, no shiny effect) */
+.sci-fi-menu-button:hover,
+.sci-fi-menu-button:focus-visible,
+.sci-fi-menu-button.is-active {
+  color: #FFFFFF;
+  letter-spacing: 0.26em;
+  text-indent: 0.26em;
+}
+
+.sci-fi-menu-button:focus-visible {
+  outline: none;
+}
+
+/* ==========================================================================
+   BOTTOM CONTROLS & HUD
+   ========================================================================== */
+.title-hud-bottom {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1380px;
+  padding: 0 40px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.36);
+  font-family: 'JetBrains Mono', 'Geist', monospace;
+}
+
+.title-control-hints {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.title-hint-key {
+  color: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.62rem;
+  margin-right: 4px;
+}
+
+/* ==========================================================================
+   MINIMALIST SCI-FI MODALS (ABOUT & CONTACT)
+   ========================================================================== */
+.title-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(24px) saturate(110%);
+  -webkit-backdrop-filter: blur(24px) saturate(110%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 24px;
+  animation: titleModalFadeIn 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes titleModalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.title-modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  background: rgba(10, 10, 14, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+  padding: 36px 40px;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  animation: titleModalBoxSlide 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes titleModalBoxSlide {
+  from {
+    transform: translateY(12px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.title-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+}
+
+.title-modal-title {
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.title-modal-subtitle {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 6px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.title-modal-close-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.65);
+  padding: 6px 14px;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 150ms ease;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.title-modal-close-btn:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.title-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.title-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.title-modal-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px;
+}
+
+.title-modal-card-title {
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.title-modal-card-desc {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.title-modal-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #FFFFFF;
+  padding: 10px 20px;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 180ms ease;
+  margin-top: 8px;
+  align-self: flex-start;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.title-modal-action-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Desktops, Laptops, Compact Screens)
+   ========================================================================== */
+@media (max-width: 900px) {
+  .title-hud-top,
+  .title-hud-bottom {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .title-modal-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .title-hud-top {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    padding-top: 20px;
+  }
+
+  .title-hud-bottom {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    padding-bottom: 20px;
+    text-align: center;
+  }
+
+  .title-main-heading {
+    letter-spacing: 0.24em;
+    text-indent: 0.24em;
+  }
+
+  .sci-fi-menu-list {
+    gap: 18px;
+  }
+
+  .title-modal-box {
+    padding: 24px 20px;
+  }
+}

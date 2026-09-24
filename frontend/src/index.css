@@ -323,6 +323,21 @@ html, body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.40);
 }
 
+/* Dedicated Health Analysis Frosted Glass Blur Boxes */
+.health-glass-card {
+  background: rgba(10, 10, 14, 0.72) !important;
+  backdrop-filter: blur(24px) saturate(125%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(125%) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.50), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.health-glass-card-subtle {
+  background: rgba(255, 255, 255, 0.04) !important;
+  backdrop-filter: blur(12px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(120%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
 .text-legible {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 2px 8px rgba(0, 0, 0, 0.85);
 }

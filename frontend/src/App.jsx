@@ -5,6 +5,7 @@ import ReportUploadModal from './components/ReportUploadModal';
 import AnalysisProcessingModal from './components/AnalysisProcessingModal';
 import MedicalChatbotWidget from './components/MedicalChatbotWidget';
 import GeneGuardBackgroundVideo from './components/GeneGuardBackgroundVideo';
+import TitleScreenMenu from './components/TitleScreenMenu';
 
 import HealthInput from './pages/HealthInput';
 import AnalysisDashboard from './pages/AnalysisDashboard';
@@ -22,6 +23,7 @@ import {
 const API_BASE = 'http://localhost:5000/api';
 
 export default function App() {
+  const [inTitleScreen, setInTitleScreen] = useState(true);
   const [activeTab, setActiveTab] = useState('input');
   const [activeModule, setActiveModule] = useState('cardiovascular');
   const [schemas, setSchemas] = useState(null);
@@ -589,6 +591,17 @@ export default function App() {
     setShowReportModal(true);
   };
 
+  if (inTitleScreen) {
+    return (
+      <TitleScreenMenu
+        onStartGeneGuard={() => {
+          setInTitleScreen(false);
+          setActiveTab('input');
+        }}
+      />
+    );
+  }
+
   return (
     <>
       <GeneGuardBackgroundVideo activeTab={activeTab} />
@@ -601,6 +614,7 @@ export default function App() {
         onResetSession={handleResetSession}
         isChatbotOpen={isChatbotOpen}
         onToggleChatbot={() => setIsChatbotOpen(!isChatbotOpen)}
+        onReturnToTitleScreen={() => setInTitleScreen(true)}
       />
 
       <main className="main-content" style={{ padding: activeTab === 'family' ? '16px 20px 20px' : '24px 20px 60px' }}>

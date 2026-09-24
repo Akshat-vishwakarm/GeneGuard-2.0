@@ -344,13 +344,14 @@ export default function FinalAnalysisReport({
       ------------------------------------------------------------- */}
       <div 
         style={{
-          background: 'rgba(255, 255, 255, 0.025)',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
+          background: 'rgba(10, 10, 14, 0.72)',
+          border: '1px solid rgba(255, 255, 255, 0.12)',
           borderRadius: '16px',
           padding: '24px 28px',
           marginBottom: '32px',
-          backdropFilter: 'blur(16px)',
-          boxShadow: 'none'
+          backdropFilter: 'blur(28px) saturate(125%)',
+          WebkitBackdropFilter: 'blur(28px) saturate(125%)',
+          boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.50), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
         }}
       >
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px' }}>
@@ -387,7 +388,7 @@ export default function FinalAnalysisReport({
             </p>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', padding: '10px 18px', background: 'rgba(255, 255, 255, 0.03)', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.08)', backdropFilter: 'blur(8px)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', padding: '10px 18px', background: 'rgba(255, 255, 255, 0.04)', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.10)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}>
             <img 
               src="/geneguard-logo-full.png" 
               alt="GeneGuard" 
@@ -402,12 +403,14 @@ export default function FinalAnalysisReport({
           alignItems: 'center',
           flexWrap: 'wrap',
           gap: '12px',
-          background: 'rgba(255, 255, 255, 0.02)',
-          border: '1px solid rgba(255, 255, 255, 0.07)',
+          background: 'rgba(255, 255, 255, 0.04)',
+          border: '1px solid rgba(255, 255, 255, 0.09)',
           borderRadius: 'var(--radius-sm)',
           padding: '8px 16px',
           fontSize: '0.82rem',
-          color: 'var(--text-secondary)'
+          color: 'var(--text-secondary)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)'
         }}>
           <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{cleanPatientName}</span>
           <span style={{ color: 'var(--text-muted)' }}>•</span>
@@ -466,17 +469,20 @@ export default function FinalAnalysisReport({
               <div
                 key={dis.key}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.02)',
+                  background: 'rgba(10, 10, 14, 0.72)',
+                  backdropFilter: 'blur(24px) saturate(125%)',
+                  WebkitBackdropFilter: 'blur(24px) saturate(125%)',
                   border: isAvail 
-                    ? (riskPct >= 50 ? '1px solid rgba(248, 113, 113, 0.3)' : (riskPct >= 20 ? '1px solid rgba(251, 191, 36, 0.3)' : '1px solid rgba(255, 255, 255, 0.08)'))
-                    : '1px solid rgba(255, 255, 255, 0.06)',
-                  borderRadius: '14px',
-                  padding: '18px',
+                    ? (riskPct >= 50 ? '1px solid rgba(248, 113, 113, 0.40)' : (riskPct >= 20 ? '1px solid rgba(251, 191, 36, 0.40)' : '1px solid rgba(255, 255, 255, 0.12)'))
+                    : '1px solid rgba(255, 255, 255, 0.09)',
+                  borderRadius: '16px',
+                  padding: '20px',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  minHeight: '170px',
-                  boxShadow: 'none'
+                  minHeight: '175px',
+                  boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.50), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
+                  transition: 'transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease'
                 }}
               >
                 <div>
@@ -625,11 +631,13 @@ export default function FinalAnalysisReport({
               <div
                 key={dis.key}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.02)',
-                  border: hasAffected ? '1px solid rgba(56, 189, 248, 0.25)' : '1px solid rgba(255, 255, 255, 0.06)',
-                  borderRadius: '14px',
-                  padding: '18px 20px',
-                  boxShadow: 'none'
+                  background: 'rgba(10, 10, 14, 0.72)',
+                  backdropFilter: 'blur(24px) saturate(125%)',
+                  WebkitBackdropFilter: 'blur(24px) saturate(125%)',
+                  border: hasAffected ? '1px solid rgba(56, 189, 248, 0.35)' : '1px solid rgba(255, 255, 255, 0.10)',
+                  borderRadius: '16px',
+                  padding: '20px',
+                  boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.50), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
                 }}
               >
                 {/* Header: DISEASE */}
@@ -678,10 +686,12 @@ export default function FinalAnalysisReport({
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
-                          background: 'rgba(255, 255, 255, 0.02)',
-                          border: '1px solid rgba(255, 255, 255, 0.05)',
-                          borderRadius: '8px',
-                          padding: '8px 12px'
+                          background: 'rgba(255, 255, 255, 0.04)',
+                          backdropFilter: 'blur(12px)',
+                          WebkitBackdropFilter: 'blur(12px)',
+                          border: '1px solid rgba(255, 255, 255, 0.08)',
+                          borderRadius: '10px',
+                          padding: '10px 14px'
                         }}
                       >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -713,10 +723,12 @@ export default function FinalAnalysisReport({
                     <div style={{ 
                       color: 'var(--text-secondary)', 
                       fontSize: '0.84rem',
-                      padding: '10px 12px',
-                      background: 'rgba(255, 255, 255, 0.02)',
-                      borderRadius: '8px',
-                      border: '1px solid rgba(255, 255, 255, 0.05)',
+                      padding: '12px 14px',
+                      background: 'rgba(255, 255, 255, 0.04)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      borderRadius: '10px',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
                       marginBottom: '6px'
                     }}>
                       No known cases recorded
@@ -731,10 +743,12 @@ export default function FinalAnalysisReport({
                     color: 'var(--text-muted)', 
                     fontSize: '0.84rem',
                     fontStyle: 'italic',
-                    padding: '10px 12px',
-                    background: 'rgba(255, 255, 255, 0.015)',
-                    borderRadius: '8px',
-                    border: '1px dashed rgba(255, 255, 255, 0.08)'
+                    padding: '14px 16px',
+                    background: 'rgba(255, 255, 255, 0.03)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
+                    borderRadius: '10px',
+                    border: '1px dashed rgba(255, 255, 255, 0.12)'
                   }}>
                     No family history recorded
                   </div>
@@ -765,12 +779,14 @@ export default function FinalAnalysisReport({
             FAMILY IMPACT OVERVIEW (Fast 5-second scan)
         ----------------------------------------------------------- */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.02)',
-          border: '1px solid rgba(255, 255, 255, 0.07)',
-          borderRadius: '14px',
-          padding: '18px 20px',
-          marginBottom: '18px',
-          boxShadow: 'none'
+          background: 'rgba(10, 10, 14, 0.72)',
+          backdropFilter: 'blur(24px) saturate(125%)',
+          WebkitBackdropFilter: 'blur(24px) saturate(125%)',
+          border: '1px solid rgba(255, 255, 255, 0.12)',
+          borderRadius: '16px',
+          padding: '22px',
+          marginBottom: '20px',
+          boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.50), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
         }}>
           <div style={{
             fontSize: '0.72rem',
@@ -803,10 +819,12 @@ export default function FinalAnalysisReport({
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    background: 'rgba(255, 255, 255, 0.02)',
-                    border: '1px solid rgba(255, 255, 255, 0.05)',
-                    borderRadius: '8px',
-                    padding: '10px 14px'
+                    background: 'rgba(255, 255, 255, 0.04)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    borderRadius: '10px',
+                    padding: '12px 14px'
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -944,15 +962,17 @@ export default function FinalAnalysisReport({
               <div
                 key={dis.key}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.02)',
+                  background: 'rgba(10, 10, 14, 0.72)',
+                  backdropFilter: 'blur(24px) saturate(125%)',
+                  WebkitBackdropFilter: 'blur(24px) saturate(125%)',
                   border: isFAAvailable 
-                    ? (isStateB ? '1px solid rgba(52, 211, 153, 0.25)' : '1px solid rgba(56, 189, 248, 0.25)')
+                    ? (isStateB ? '1px solid rgba(52, 211, 153, 0.35)' : '1px solid rgba(56, 189, 248, 0.35)')
                     : isStateC 
-                      ? '1px solid rgba(245, 158, 11, 0.25)' 
-                      : '1px solid rgba(255, 255, 255, 0.07)',
-                  borderRadius: '14px',
-                  padding: '20px 22px',
-                  boxShadow: 'none'
+                      ? '1px solid rgba(245, 158, 11, 0.35)' 
+                      : '1px solid rgba(255, 255, 255, 0.10)',
+                  borderRadius: '16px',
+                  padding: '22px',
+                  boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.50), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
                 }}
               >
                 {/* Title and Status Badge */}
@@ -985,9 +1005,11 @@ export default function FinalAnalysisReport({
                       display: 'grid',
                       gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
                       gap: '14px',
-                      background: 'rgba(0, 0, 0, 0.4)',
-                      border: '1px solid rgba(255, 255, 255, 0.05)',
-                      borderRadius: '10px',
+                      background: 'rgba(5, 5, 8, 0.65)',
+                      backdropFilter: 'blur(16px)',
+                      WebkitBackdropFilter: 'blur(16px)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      borderRadius: '12px',
                       padding: '16px 20px',
                       alignItems: 'center',
                       marginBottom: '14px'
@@ -1107,13 +1129,15 @@ export default function FinalAnalysisReport({
 
                     {/* Non-Causal Plain Explanation */}
                     <div style={{
-                      background: 'rgba(255, 255, 255, 0.02)',
-                      border: '1px solid rgba(255, 255, 255, 0.05)',
+                      background: 'rgba(255, 255, 255, 0.04)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
                       borderRadius: '10px',
-                      padding: '12px 16px',
+                      padding: '14px 18px',
                       fontSize: '0.86rem',
                       color: '#CBD5E1',
-                      lineHeight: 1.45,
+                      lineHeight: 1.5,
                       marginBottom: '12px'
                     }}>
                       <span style={{ fontWeight: 600, color: '#F8FAFC' }}>
@@ -1230,11 +1254,13 @@ export default function FinalAnalysisReport({
                     <div style={{ 
                       fontSize: '0.84rem', 
                       color: '#94A3B8', 
-                      lineHeight: 1.45,
-                      padding: '10px 14px',
-                      background: 'rgba(255, 255, 255, 0.02)',
-                      borderRadius: '8px',
-                      border: '1px solid rgba(255, 255, 255, 0.04)'
+                      lineHeight: 1.5,
+                      padding: '12px 16px',
+                      background: 'rgba(255, 255, 255, 0.04)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      borderRadius: '10px',
+                      border: '1px solid rgba(255, 255, 255, 0.08)'
                     }}>
                       Family-history effect: increased odds reported in published evidence. Personal-model probability was not numerically adjusted because the published effect could not be validly calibrated to this model. GeneGuard does not fabricate an uncalibrated percentage adjustment.
                     </div>
@@ -1246,7 +1272,7 @@ export default function FinalAnalysisReport({
                       display: 'grid',
                       gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
                       gap: '12px',
-                      background: 'rgba(255, 255, 255, 0.02)',
+                      background: 'rgba(5, 5, 8, 0.65)',
                       backdropFilter: 'blur(16px)',
                       WebkitBackdropFilter: 'blur(16px)',
                       border: '1px solid rgba(255, 255, 255, 0.08)',
@@ -1289,11 +1315,13 @@ export default function FinalAnalysisReport({
                     <div style={{ 
                       fontSize: '0.84rem', 
                       color: '#94A3B8', 
-                      lineHeight: 1.45,
-                      padding: '10px 14px',
-                      background: 'rgba(255, 255, 255, 0.02)',
-                      borderRadius: '8px',
-                      border: '1px solid rgba(255, 255, 255, 0.04)'
+                      lineHeight: 1.5,
+                      padding: '12px 16px',
+                      background: 'rgba(255, 255, 255, 0.04)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      borderRadius: '10px',
+                      border: '1px solid rgba(255, 255, 255, 0.08)'
                     }}>
                       {hasFamilyRecorded ? (
                         <>
@@ -1313,10 +1341,12 @@ export default function FinalAnalysisReport({
                 {evalData.ai_evaluation && (
                   <div style={{
                     marginTop: '14px',
-                    background: 'rgba(6, 182, 212, 0.04)',
-                    border: '1px solid rgba(6, 182, 212, 0.18)',
+                    background: 'rgba(6, 182, 212, 0.06)',
+                    backdropFilter: 'blur(14px)',
+                    WebkitBackdropFilter: 'blur(14px)',
+                    border: '1px solid rgba(6, 182, 212, 0.22)',
                     borderRadius: '10px',
-                    padding: '12px 16px',
+                    padding: '14px 18px',
                     fontSize: '0.84rem',
                     color: '#E2E8F0',
                     lineHeight: 1.5
@@ -1368,12 +1398,14 @@ export default function FinalAnalysisReport({
         {/* AI Final Evaluation Content */}
         {aiEval.status === 'unavailable' ? (
           <div style={{
-            background: 'var(--glass-surface)',
+            background: 'rgba(10, 10, 14, 0.72)',
             border: '1px solid rgba(234, 179, 8, 0.25)',
-            borderRadius: '12px',
-            padding: '18px 20px',
+            borderRadius: '16px',
+            padding: '22px',
             marginBottom: '16px',
-            backdropFilter: 'blur(16px)'
+            backdropFilter: 'blur(24px) saturate(125%)',
+            WebkitBackdropFilter: 'blur(24px) saturate(125%)',
+            boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.50), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#EAB308', fontWeight: 600, fontSize: '0.88rem', marginBottom: '6px' }}>
               <AlertTriangle size={18} />
@@ -1385,12 +1417,14 @@ export default function FinalAnalysisReport({
           </div>
         ) : (aiEval.overall_summary || aiEval.family_network_summary) ? (
           <div style={{
-            background: 'var(--glass-surface)',
+            background: 'rgba(10, 10, 14, 0.72)',
             border: '1px solid var(--border-subtle)',
-            borderRadius: '12px',
-            padding: '20px 22px',
+            borderRadius: '16px',
+            padding: '22px',
             marginBottom: '16px',
-            backdropFilter: 'blur(16px)'
+            backdropFilter: 'blur(24px) saturate(125%)',
+            WebkitBackdropFilter: 'blur(24px) saturate(125%)',
+            boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.50), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
           }}>
             {/* Header */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
@@ -1417,14 +1451,16 @@ export default function FinalAnalysisReport({
             {/* Overall Narrative */}
             {aiEval.overall_summary && (
               <div style={{
-                background: 'rgba(255, 255, 255, 0.015)',
-                border: '1px solid var(--border-subtle)',
-                borderRadius: '8px',
-                padding: '14px 16px',
+                background: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: '10px',
+                padding: '14px 18px',
                 marginBottom: '12px',
                 fontSize: '0.82rem',
                 color: 'var(--text-secondary)',
-                lineHeight: 1.6
+                lineHeight: 1.6,
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)'
               }}>
                 <div style={{ fontSize: '0.68rem', color: 'var(--accent-cyan)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
                   Personalized Risk Synthesis
@@ -1436,14 +1472,16 @@ export default function FinalAnalysisReport({
             {/* Family Network Hereditary Summary */}
             {aiEval.family_network_summary && (
               <div style={{
-                background: 'rgba(255, 255, 255, 0.015)',
-                border: '1px solid var(--border-subtle)',
-                borderRadius: '8px',
-                padding: '14px 16px',
+                background: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: '10px',
+                padding: '14px 18px',
                 marginBottom: (aiEval.important_data_gaps && aiEval.important_data_gaps.length > 0) ? '12px' : '0',
                 fontSize: '0.82rem',
                 color: 'var(--text-secondary)',
-                lineHeight: 1.6
+                lineHeight: 1.6,
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)'
               }}>
                 <div style={{ fontSize: '0.68rem', color: 'var(--accent-cyan)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
                   Family Network & Kinship Structure
@@ -1455,11 +1493,13 @@ export default function FinalAnalysisReport({
             {/* Important Data Gaps */}
             {aiEval.important_data_gaps && aiEval.important_data_gaps.length > 0 && (
               <div style={{
-                background: 'rgba(234, 179, 8, 0.03)',
-                border: '1px solid rgba(234, 179, 8, 0.15)',
-                borderRadius: '8px',
+                background: 'rgba(234, 179, 8, 0.05)',
+                border: '1px solid rgba(234, 179, 8, 0.20)',
+                borderRadius: '10px',
                 padding: '12px 16px',
-                fontSize: '0.8rem'
+                fontSize: '0.8rem',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)'
               }}>
                 <div style={{ fontSize: '0.68rem', color: '#EAB308', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
                   Important Data Gaps & Considerations
@@ -1475,11 +1515,13 @@ export default function FinalAnalysisReport({
         ) : null}
 
         <div style={{
-          background: 'var(--glass-surface)',
+          background: 'rgba(10, 10, 14, 0.72)',
           border: '1px solid var(--border-subtle)',
-          borderRadius: '12px',
+          borderRadius: '16px',
           overflow: 'hidden',
-          backdropFilter: 'blur(16px)'
+          backdropFilter: 'blur(24px) saturate(125%)',
+          WebkitBackdropFilter: 'blur(24px) saturate(125%)',
+          boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.50), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
         }}>
           {/* Collapsible Header Toggle Button */}
           <button
@@ -1540,9 +1582,11 @@ export default function FinalAnalysisReport({
                     <div
                       key={dis.key}
                       style={{
-                        background: isSelected ? 'rgba(56, 189, 248, 0.03)' : 'rgba(255, 255, 255, 0.015)',
-                        border: isSelected ? '1px solid rgba(56, 189, 248, 0.3)' : '1px solid var(--border-subtle)',
-                        borderRadius: '8px',
+                        background: isSelected ? 'rgba(56, 189, 248, 0.08)' : 'rgba(255, 255, 255, 0.04)',
+                        backdropFilter: 'blur(10px)',
+                        WebkitBackdropFilter: 'blur(10px)',
+                        border: isSelected ? '1px solid rgba(56, 189, 248, 0.35)' : '1px solid var(--border-subtle)',
+                        borderRadius: '10px',
                         padding: '14px 16px',
                         transition: 'all 0.15s ease'
                       }}

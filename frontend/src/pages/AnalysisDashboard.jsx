@@ -201,11 +201,11 @@ export default function AnalysisDashboard({
               gap: '8px',
               padding: '8px 16px',
               borderRadius: 'var(--radius-md)',
-              background: 'rgba(8, 8, 8, 0.58)',
+              background: 'rgba(10, 10, 14, 0.72)',
               backdropFilter: 'blur(20px)',
               WebkitBackdropFilter: 'blur(20px)',
               border: '1px solid rgba(255, 255, 255, 0.12)',
-              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.35)'
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
             }}
           >
             <UserCheck size={15} color="var(--text-muted)" />
@@ -243,11 +243,11 @@ export default function AnalysisDashboard({
           width: '100%',
           padding: '14px 18px',
           borderRadius: 'var(--radius-md)',
-          background: 'rgba(8, 8, 8, 0.58)',
+          background: 'rgba(10, 10, 14, 0.72)',
           backdropFilter: 'blur(24px) saturate(115%)',
           WebkitBackdropFilter: 'blur(24px) saturate(115%)',
           border: '1px solid rgba(255, 255, 255, 0.10)',
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.35)',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
           display: 'flex',
           alignItems: 'flex-start',
           gap: '12px',
@@ -286,10 +286,10 @@ export default function AnalysisDashboard({
                 style={{
                   padding: '16px',
                   borderRadius: 'var(--radius-md)',
-                  background: 'rgba(8, 8, 8, 0.58)',
+                  background: 'rgba(10, 10, 14, 0.72)',
                   backdropFilter: 'blur(28px) saturate(115%)',
                   WebkitBackdropFilter: 'blur(28px) saturate(115%)',
-                  boxShadow: '0 8px 30px rgba(0, 0, 0, 0.45)',
+                  boxShadow: '0 8px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
                   border: isFamilyActive 
                     ? '1px solid rgba(56, 189, 248, 0.35)' 
                     : '1px solid rgba(255, 255, 255, 0.10)',
@@ -301,12 +301,12 @@ export default function AnalysisDashboard({
                   transition: 'border-color 0.15s ease, background 0.15s ease, transform 0.15s ease'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(15, 15, 15, 0.72)';
+                  e.currentTarget.style.background = 'rgba(18, 18, 24, 0.82)';
                   e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.22)';
                   e.currentTarget.style.transform = 'translateY(-2px)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(8, 8, 8, 0.58)';
+                  e.currentTarget.style.background = 'rgba(10, 10, 14, 0.72)';
                   e.currentTarget.style.borderColor = isFamilyActive 
                     ? '1px solid rgba(56, 189, 248, 0.35)' 
                     : '1px solid rgba(255, 255, 255, 0.10)';
@@ -382,10 +382,10 @@ export default function AnalysisDashboard({
                 style={{
                   padding: '16px',
                   borderRadius: 'var(--radius-md)',
-                  background: 'rgba(8, 8, 8, 0.58)',
+                  background: 'rgba(10, 10, 14, 0.72)',
                   backdropFilter: 'blur(28px) saturate(115%)',
                   WebkitBackdropFilter: 'blur(28px) saturate(115%)',
-                  boxShadow: '0 8px 30px rgba(0, 0, 0, 0.45)',
+                  boxShadow: '0 8px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
                   border: '1px solid rgba(255, 255, 255, 0.10)',
                   display: 'flex',
                   flexDirection: 'column',
