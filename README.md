@@ -2,7 +2,7 @@
 
 <img src="./GeneGuard-logo.png" alt="GeneGuard Logo" width="220"/>
 
-🧬 GeneGuard
+
 
 AI-Powered Genetic & Family Health Analysis
 
