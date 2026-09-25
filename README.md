@@ -2,7 +2,7 @@
 
 <img src="./GeneGuard-logo.png" alt="GeneGuard Logo" width="220"/>
 
-
+🧬 GeneGuard
 
 AI-Powered Genetic & Family Health Analysis
 
@@ -27,81 +27,72 @@ GeneGuard is an AI/ML healthcare research platform designed to analyze personal 
 
 Instead of relying on one universal model, GeneGuard uses individual disease-specific models, allowing each model to work with the features and preprocessing appropriate to its own prediction task.
 
-                              🧬 GeneGuard
-                    │
-       ┌────────────┼────────────┐
-       ▼            ▼            ▼
- Personal       Family       Medical
- Health         Health       Reports
-       └────────────┼────────────┘
-                    ▼
-        Disease-Specific ML
-                    │
-     ┌──────┬───────┼───────┬──────┐
-     ▼      ▼       ▼       ▼      ▼
-   Cardio  Meta     BP   Thyroid Cancer
-                    │
-                    ▼
-             Final Analysis
-                    │
-                    ▼
-          🤖 Gemini Interpretation
+🧬 Platform Architecture
+
+flowchart TD
+    A["🧬 GeneGuard"] --> B["Personal Health"]
+    A --> C["Family Health"]
+    A --> D["Medical Reports"]
+
+    B --> E["Disease-Specific ML Models"]
+    C --> E
+    D --> E
+
+    E --> F["❤️ Cardiovascular"]
+    E --> G["🩸 Metabolic"]
+    E --> H["🩺 Hypertension"]
+    E --> I["🦋 Thyroid"]
+    E --> J["🧬 Hereditary Cancer"]
+
+    F --> K["📊 Model Outputs"]
+    G --> K
+    H --> K
+    I --> K
+    J --> K
+
+    C --> L["👨‍👩‍👧 Family Risk Engine"]
+    K --> M["Final Analysis"]
+    L --> M
+    M --> N["🤖 Gemini Interpretation"]
+
+Design principle: each disease model receives only the features and preprocessing pipeline it was trained for.
 
 🧠 Disease-Specific Machine Learning
 
 GeneGuard is built around separate ML pipelines for different health domains.
 
-Model
-
-Purpose
-
-Example Inputs
-
-❤️ Cardiovascular
-
-Cardiovascular classification
-
-Age, sex, BP, cholesterol, ECG, chest pain, max HR
-
-🩸 Metabolic
-
-Metabolic disease analysis
-
-Glucose, HbA1c, lipids, insulin, HOMA-IR, BMI
-
-🩺 Hypertension
-
-Blood-pressure analysis
-
-Systolic/diastolic BP, age, BMI, HR, validated health features
-
-🦋 Thyroid
-
-Thyroid classification
-
-TSH, T3, T4, T4U, FTI, medication, goitre
-
-🧬 Hereditary Cancer
-
-Cancer/hereditary-risk analysis
-
-Age, genetic-risk indicators, exposures, symptoms
-
-Why separate models?
-
-                 Health Data
-                     │
-                     ▼
-               Feature Mapping
-                     │
-       ┌─────────────┼─────────────┐
-       ▼             ▼             ▼
-   Cardio Model  Thyroid Model  Cancer Model
-       │             │             │
-       ▼             ▼             ▼
-   Cardio Output  Thyroid Output  Cancer Output
-
-A model receives only the features relevant to its trained schema.
+<table>
+<tr>
+<th>Model</th>
+<th>Purpose</th>
+<th>Example Inputs</th>
+</tr>
+<tr>
+<td>❤️ <b>Cardiovascular</b></td>
+<td>Cardiovascular classification</td>
+<td>Age, sex, BP, cholesterol, ECG, chest pain, max HR</td>
+</tr>
+<tr>
+<td>🩸 <b>Metabolic</b></td>
+<td>Metabolic disease analysis</td>
+<td>Glucose, HbA1c, lipids, insulin, HOMA-IR, BMI</td>
+</tr>
+<tr>
+<td>🩺 <b>Hypertension</b></td>
+<td>Blood-pressure analysis</td>
+<td>Systolic/diastolic BP, age, BMI, HR, validated health features</td>
+</tr>
+<tr>
+<td>🦋 <b>Thyroid</b></td>
+<td>Thyroid classification</td>
+<td>TSH, T3, T4, T4U, FTI, medication, goitre</td>
+</tr>
+<tr>
+<td>🧬 <b>Hereditary Cancer</b></td>
+<td>Cancer/hereditary-risk analysis</td>
+<td>Age, genetic-risk indicators, exposures, symptoms</td>
+</tr>
+</table>
 
 ❤️ Cardiovascular Model
 
