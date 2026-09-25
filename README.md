@@ -1,13 +1,15 @@
 <div align="center">
 
 <img src="./GeneGuard-logo.png" alt="GeneGuard Logo" width="220"/>
-https://gene-guard-2-0-frontend.vercel.app/
 
 
 
-AI-Powered Genetic & Family Health Analysis
+AI-Powered Genetic & Family Health Analysis   
 
 Personal health • Disease-specific ML • Family risk • Medical RAG
+
+https://gene-guard-2-0-frontend.vercel.app/
+
 
 <br/>
 
