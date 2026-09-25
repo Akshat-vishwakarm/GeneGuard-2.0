@@ -29,31 +29,10 @@ Instead of relying on one universal model, GeneGuard uses individual disease-spe
 
 🧬 Platform Architecture
 
-flowchart TD
-    A["🧬 GeneGuard"] --> B["Personal Health"]
-    A --> C["Family Health"]
-    A --> D["Medical Reports"]
 
-    B --> E["Disease-Specific ML Models"]
-    C --> E
-    D --> E
+<img src="./flowc_chart.png" alt="GeneGuard Architecture" width="1200" height="700"/>
 
-    E --> F["❤️ Cardiovascular"]
-    E --> G["🩸 Metabolic"]
-    E --> H["🩺 Hypertension"]
-    E --> I["🦋 Thyroid"]
-    E --> J["🧬 Hereditary Cancer"]
 
-    F --> K["📊 Model Outputs"]
-    G --> K
-    H --> K
-    I --> K
-    J --> K
-
-    C --> L["👨‍👩‍👧 Family Risk Engine"]
-    K --> M["Final Analysis"]
-    L --> M
-    M --> N["🤖 Gemini Interpretation"]
 
 Design principle: each disease model receives only the features and preprocessing pipeline it was trained for.
 
