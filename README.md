@@ -36,7 +36,7 @@ Instead of relying on one universal model, GeneGuard uses individual disease-spe
 
 Design principle: each disease model receives only the features and preprocessing pipeline it was trained for.
 
-🧠 Disease-Specific Machine Learning
+<h2>🧠 Disease-Specific Machine Learning</h2>
 
 GeneGuard is built around separate ML pipelines for different health domains.
 
@@ -73,7 +73,7 @@ GeneGuard is built around separate ML pipelines for different health domains.
 </tr>
 </table>
 
-❤️ Cardiovascular Model
+<h2>❤️ Cardiovascular Model</h2>
 
 The cardiovascular module uses a dedicated tabular ML pipeline.
 
@@ -116,7 +116,7 @@ ROC-AUC
 
 These are research/prototype evaluation results and are not clinical validation.
 
-<h3> 🩸 Metabolic Disease Model</h3>h3>
+<h2> 🩸 Metabolic Disease Model</h2> 
 
 GeneGuard includes a separate metabolic model built around metabolic health indicators.
 
@@ -146,7 +146,7 @@ Other features supported by the trained model
 
 The metabolic model maintains its own feature schema and preprocessing pipeline.
 
-🩺 Hypertension Model
+<h2>🩺 Hypertension Model</h2>
 
 A dedicated hypertension/blood-pressure model handles blood-pressure-related analysis.
 
@@ -176,7 +176,7 @@ Cardiovascular Model
 
 They may use overlapping information, but they represent different prediction tasks.
 
-🦋 Thyroid Disease Model
+<h2>🦋 Thyroid Disease Model</h2>
 
 GeneGuard includes an independent thyroid classification model.
 
@@ -212,7 +212,7 @@ The thyroid module has included experimentation with synthetic training data. Ex
 
 The intended production approach is a reproducible pipeline using the actual thyroid dataset, preprocessing, and trained model artifact.
 
-🧬 Hereditary Cancer Model
+<h2>🧬 Hereditary Cancer Model</h2>
 
 GeneGuard contains a dedicated cancer/hereditary-risk module.
 
