@@ -1,6 +1,7 @@
 <div align="center">
 
 <img src="./GeneGuard-logo.png" alt="GeneGuard Logo" width="220"/>
+https://gene-guard-2-0-frontend.vercel.app/
 
 
 
