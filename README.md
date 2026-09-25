@@ -2,7 +2,7 @@
 
 <img src="./GeneGuard-logo.png" alt="GeneGuard Logo" width="220"/>
 
-🧬 GeneGuard
+
 
 AI-Powered Genetic & Family Health Analysis
 
@@ -116,7 +116,7 @@ ROC-AUC
 
 These are research/prototype evaluation results and are not clinical validation.
 
-🩸 Metabolic Disease Model
+<h3> 🩸 Metabolic Disease Model</h3>h3>
 
 GeneGuard includes a separate metabolic model built around metabolic health indicators.
 
