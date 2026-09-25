@@ -14,7 +14,6 @@ Personal health • Disease-specific ML • Family risk • Medical RAG
 
 
 
-
 <br/>
 
 GeneGuard brings disease-specific machine learning, family-health context, medical report extraction, and medical knowledge retrieval into one platform.
@@ -28,7 +27,6 @@ GeneGuard is an AI/ML healthcare research platform designed to analyze personal 
 Instead of relying on one universal model, GeneGuard uses individual disease-specific models, allowing each model to work with the features and preprocessing appropriate to its own prediction task.
 
 🧬 Platform Architecture
-
 
 <img src="./flowc_chart.png" alt="GeneGuard Architecture" width="1200" height="700"/>
 
@@ -171,7 +169,7 @@ Smoking/activity variables where supported
 Relevant medical history
 
 Hypertension Model
-        ≠
+≠
 Cardiovascular Model
 
 They may use overlapping information, but they represent different prediction tasks.
@@ -262,13 +260,13 @@ The exact target and feature schema remain specific to the trained model.
 
 GeneGuard lets users build an interactive family-health network.
 
-                  Grandfather
-                       │
-                    Father
-                       │
-        Brother ───── Me ───── Mother
-                                 │
-                         Maternal Grandfather
+              Grandfather
+                   │
+                Father
+                   │
+    Brother ───── Me ───── Mother
+                             │
+                     Maternal Grandfather
 
 Family members can contain:
 
@@ -305,21 +303,21 @@ GeneGuard separates personal model output from family-aware analysis.
 Personal prediction
 
 Personal Health Data
-        ↓
+↓
 Disease Model
-        ↓
+↓
 P(personal)
 
 Family-aware calculation
 
 P(personal)
-     +
++
 Validated Family Evidence / Model
-     ↓
+↓
 Family Risk Engine
-     ↓
+↓
 P(family-aware)
-     ↓
+↓
 Change in percentage points
 
 The system does not arbitrarily add a percentage because a parent or grandparent has a disease.
@@ -331,19 +329,19 @@ If a validated family-aware mechanism is unavailable, GeneGuard does not fabrica
 Medical reports can be supplied as PDF, JPG, or PNG.
 
 PDF / Image
-    ↓
+↓
 OCR / Document Extraction
-    ↓
+↓
 Test Identification
-    ↓
+↓
 Value + Unit Extraction
-    ↓
+↓
 Normalization
-    ↓
+↓
 User Verification
-    ↓
+↓
 Structured Health Data
-    ↓
+↓
 Disease-Specific Models
 
 Report extraction is data extraction — not disease prediction.
@@ -360,37 +358,37 @@ Instead, medical knowledge is converted into vector embeddings, stored in Pineco
 
 🔬 RAG Pipeline
 
-        Gale Encyclopedia of Medicine
-                    │
-                    ▼
-             Text Extraction
-                    │
-                    ▼
-        Recursive Text Chunking
-                    │
-                    ▼
-       Hugging Face Embeddings
-          all-MiniLM-L6-v2
-                    │
-                    ▼
-            384D Embeddings
-                    │
-                    ▼
-               Pinecone
-            Vector Database
-                    │
-                    ▼
-             Semantic Search
-          Cosine Similarity
-                    │
-                    ▼
-          Relevant Medical Context
-                    │
-                    ▼
-               OpenAI LLM
-                    │
-                    ▼
-             Chatbot Response
+    Gale Encyclopedia of Medicine
+                │
+                ▼
+         Text Extraction
+                │
+                ▼
+    Recursive Text Chunking
+                │
+                ▼
+   Hugging Face Embeddings
+      all-MiniLM-L6-v2
+                │
+                ▼
+        384D Embeddings
+                │
+                ▼
+           Pinecone
+        Vector Database
+                │
+                ▼
+         Semantic Search
+      Cosine Similarity
+                │
+                ▼
+      Relevant Medical Context
+                │
+                ▼
+           OpenAI LLM
+                │
+                ▼
+         Chatbot Response
 
 Core techniques
 
@@ -442,12 +440,12 @@ GeneGuard separates numerical ML, family analysis, interpretation, and medical k
 │          DISEASE-SPECIFIC ML MODELS           │
 │              Numerical Outputs                │
 └───────────────────────┬───────────────────────┘
-                        ▼
+▼
 ┌───────────────────────────────────────────────┐
 │              FAMILY RISK ENGINE               │
 │       Validated family-aware calculations     │
 └───────────────────────┬───────────────────────┘
-                        ▼
+▼
 ┌───────────────────────────────────────────────┐
 │                 GEMINI                        │
 │       Interpretation & Explanation            │
@@ -456,15 +454,15 @@ GeneGuard separates numerical ML, family analysis, interpretation, and medical k
 For medical questions:
 
 User Question
-      ↓
+↓
 Query Embedding
-      ↓
+↓
 Pinecone Retrieval
-      ↓
+↓
 Medical Context
-      ↓
+↓
 OpenAI LLM
-      ↓
+↓
 RAG Response
 
 Gemini does not replace the ML models or invent their numerical outputs.
@@ -478,14 +476,14 @@ Once the project and required dependencies are installed, the core ML inference 
 ┌─────────────────────────────┐
 │     Local GeneGuard App     │
 └──────────────┬──────────────┘
-               ▼
-        Local Health Data
-               ▼
-       Local Preprocessing
-               ▼
-       Trained Local Model
-               ▼
-        Local Prediction
+▼
+Local Health Data
+▼
+Local Preprocessing
+▼
+Trained Local Model
+▼
+Local Prediction
 
 What can run offline?
 
@@ -548,38 +546,38 @@ Disease-specific ML · Family Risk Engine · Gemini · RAG
 
 ⚙️ End-to-End Workflow
 
-                     USER
-                      │
-                      ▼
-             Personal Health Data
-                      │
-                      ▼
-             Build Family Network
-                      │
-                      ▼
-             Upload Medical Reports
-                      │
-                      ▼
-             Verify Extracted Data
-                      │
-                      ▼
-          ┌────────────────────────┐
-          │ Disease-Specific Models│
-          └────────────┬───────────┘
-                       ▼
-                Model Outputs
-                       │
-                       ▼
-              Family Risk Engine
-                       │
-                       ▼
-                Final Analysis
-                       │
-                       ▼
-              Gemini Interpretation
-                       │
-                       ▼
-               GeneGuard Report
+                 USER
+                  │
+                  ▼
+         Personal Health Data
+                  │
+                  ▼
+         Build Family Network
+                  │
+                  ▼
+         Upload Medical Reports
+                  │
+                  ▼
+         Verify Extracted Data
+                  │
+                  ▼
+      ┌────────────────────────┐
+      │ Disease-Specific Models│
+      └────────────┬───────────┘
+                   ▼
+            Model Outputs
+                   │
+                   ▼
+          Family Risk Engine
+                   │
+                   ▼
+            Final Analysis
+                   │
+                   ▼
+          Gemini Interpretation
+                   │
+                   ▼
+           GeneGuard Report
 
 🔐 Responsible AI Principles
 
@@ -606,20 +604,20 @@ RAG retrieves medical knowledge instead of fine-tuning the LLM on the encycloped
 GeneGuard explores how multiple AI techniques can work together in a health-analysis platform:
 
 Traditional ML
-      +
++
 Medical Data Processing
-      +
++
 Family History Modeling
-      +
++
 Vector Search
-      +
++
 RAG
-      +
++
 LLMs
-      +
++
 Explainability
-      ↓
-   GeneGuard
+↓
+GeneGuard
 
 🌐 Live Demo
 
