@@ -27,30 +27,25 @@ GeneGuard is an AI/ML healthcare research platform designed to analyze personal 
 
 Instead of relying on one universal model, GeneGuard uses individual disease-specific models, allowing each model to work with the features and preprocessing appropriate to its own prediction task.
 
-                    ┌──────────────────────┐
-                    │      GENE GUARD       │
-                    └──────────┬───────────┘
-                               │
-          ┌────────────────────┼────────────────────┐
-          │                    │                    │
-          ▼                    ▼                    ▼
-   Personal Health       Family Health        Medical Reports
-          │                    │                    │
-          └────────────────────┼────────────────────┘
-                               ▼
-                  Disease-Specific ML Models
-                               │
-          ┌────────────┬───────┼───────┬────────────┐
-          ▼            ▼       ▼       ▼            ▼
-      ❤️ Cardio    🩸 Metabolic  🩺 BP  🦋 Thyroid  🧬 Cancer
-          │            │       │       │            │
-          └────────────┴───────┼───────┴────────────┘
-                               ▼
-                       Family Risk Engine
-                               ▼
-                       Final Analysis
-                               ▼
-                    Gemini Interpretation
+                              🧬 GeneGuard
+                    │
+       ┌────────────┼────────────┐
+       ▼            ▼            ▼
+ Personal       Family       Medical
+ Health         Health       Reports
+       └────────────┼────────────┘
+                    ▼
+        Disease-Specific ML
+                    │
+     ┌──────┬───────┼───────┬──────┐
+     ▼      ▼       ▼       ▼      ▼
+   Cardio  Meta     BP   Thyroid Cancer
+                    │
+                    ▼
+             Final Analysis
+                    │
+                    ▼
+          🤖 Gemini Interpretation
 
 🧠 Disease-Specific Machine Learning
 
